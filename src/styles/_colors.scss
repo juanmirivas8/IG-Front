@@ -1,0 +1,25 @@
+$blue: #00A3DA;
+$navy-blue-100: #001A72;
+$navy-blue-90: #192483;
+$navy-blue-80: #334F93;
+$navy-blue-70: #4C68A3;
+$navy-blue-60: #6581B2;
+$navy-blue-50: #7E99C0;
+$navy-blue-40: #98B0CE;
+$navy-blue-30: #B1C6DB;
+$navy-blue-20: #E6EFF7;
+$cyan: #00E6FF;
+$cyan-140 : #005E70 ;
+$cyan-130 : #007F94 ;
+$cyan-120 : #00A0B8 ;
+$cyan-110 : #00C2DB;
+$cyan-100 : #00E5FF ;
+$cyan-60 : #00E5FF ;
+$cyan-20 : #CAFAFF ;
+$grey: #F5F5F5;
+$dark-grey: #464b50;
+$white: #FFFFFF;
+
+@mixin backgroundGradient($direction: to left, $color1 : $cyan-110, $color2 : $navy-blue-90){
+  background: linear-gradient($direction, $color1, $color2);
+}

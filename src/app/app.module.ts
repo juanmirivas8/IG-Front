@@ -10,6 +10,7 @@ import { GuestPageComponent } from './pages/guest-page/guest-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { Error404Component } from './pages/error404/error404.component';
 import {MainRoutingModule} from "./pages/main/main-routing.module";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {MainRoutingModule} from "./pages/main/main-routing.module";
         deps: [HttpClient]
       }
 
-    })
+    }),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
