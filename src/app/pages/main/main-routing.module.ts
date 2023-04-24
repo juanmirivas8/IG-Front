@@ -9,7 +9,7 @@ import {CandidateInfoPageComponent} from "./candidate-info-page/candidate-info-p
 import {ApplicationInfoPageComponent} from "./application-info-page/application-info-page.component";
 
 const routes: Routes = [{ path: '', component: MainComponent, children: [
-    { path: '', redirectTo: 'main', pathMatch: 'full' },
+    { path: '', redirectTo: 'positions', pathMatch: 'full' },
     { path: 'main', component: MainComponent},
     { path: 'positions', component: PositionOverviewPageComponent},
     { path: 'candidates', component: CandidateOverviewPageComponent},

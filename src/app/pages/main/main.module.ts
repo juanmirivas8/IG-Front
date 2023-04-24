@@ -10,6 +10,10 @@ import { ApplicationOverviewPageComponent } from './application-overview-page/ap
 import { PositionInfoPageComponent } from './position-info-page/position-info-page.component';
 import { ApplicationInfoPageComponent } from './application-info-page/application-info-page.component';
 import { AuxDataPageComponent } from './aux-data-page/aux-data-page.component';
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatListModule} from "@angular/material/list";
+import {TranslateModule} from "@ngx-translate/core";
 
 
 @NgModule({
@@ -25,7 +29,11 @@ import { AuxDataPageComponent } from './aux-data-page/aux-data-page.component';
   ],
   imports: [
     CommonModule,
-    MainRoutingModule
+    MainRoutingModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    TranslateModule,
   ]
 })
 export class MainModule { }

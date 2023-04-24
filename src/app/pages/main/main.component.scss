@@ -1,0 +1,41 @@
+@import "colors";
+.toolbar {
+  display: flex;
+  flex-direction: row;
+}
+
+.tranduccion {
+  margin-left: auto !important;
+}
+
+.example-card {
+  max-width: 400px;
+  margin-bottom: 8px;
+}
+
+mat-sidenav-container {
+  top: 64px !important;
+}
+
+@media(max-width: 599px) {
+  mat-sidenav-container {
+    top: 56px !important;
+  }
+}
+.botonMenu{
+  margin-right: 5px !important;
+}
+.svgBlanco{
+  filter: invert(100%) brightness(200%);
+}
+h1{
+  font-family: 'ProtaStandard';
+  cursor: pointer;
+}
+h1:hover{
+  text-decoration: underline;
+}
+
+.mat-toolbar.mat-primary {
+  background: $navy-blue-90 !important;
+}
