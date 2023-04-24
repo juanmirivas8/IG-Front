@@ -19,6 +19,7 @@ $cyan-20 : #CAFAFF ;
 $grey: #F5F5F5;
 $dark-grey: #464b50;
 $white: #FFFFFF;
+$black: #000000;
 
 @mixin backgroundGradient($direction: to left, $color1 : $cyan-110, $color2 : $navy-blue-90){
   background: linear-gradient($direction, $color1, $color2);

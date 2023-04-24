@@ -1,5 +1,6 @@
 {
-  "title": "Title: {{title}}",
-  "title_head": "Title"
+  "sidenav_applications": "Applications",
+  "sidenav_candidates": "Candidates",
+  "sidenav_positions": "Positions"
 }
 
