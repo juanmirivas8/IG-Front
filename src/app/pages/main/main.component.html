@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row class="toolbar">
-    <button mat-icon-button class="buttonMenu" (click)="sidenav.toggle();">
+    <button mat-icon-button class="buttonLogo" (click)="sidenav.toggle();">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="35" height="35"
            viewBox="0 0 620 652" >
         <image id="Capa_2" data-name="Capa 2" width="620" height="652"
@@ -9,6 +9,12 @@
     </button>
 
     <h1 routerLink="/home">{{appName}}</h1>
+
+    <button mat-icon-button class="">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+
   </mat-toolbar-row>
 </mat-toolbar>
 

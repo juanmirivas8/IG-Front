@@ -15,6 +15,9 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
 import {TranslateModule} from "@ngx-translate/core";
 import {MatButtonModule} from "@angular/material/button";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatIconModule} from "@angular/material/icon";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 @NgModule({
@@ -36,6 +39,9 @@ import {MatButtonModule} from "@angular/material/button";
     MatListModule,
     TranslateModule,
     MatButtonModule,
+    MatMenuModule,
+    MatIconModule,
+    BrowserAnimationsModule,
   ]
 })
 export class MainModule { }
