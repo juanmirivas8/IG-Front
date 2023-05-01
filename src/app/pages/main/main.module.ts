@@ -17,7 +17,7 @@ import {TranslateModule} from "@ngx-translate/core";
 import {MatButtonModule} from "@angular/material/button";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatIconModule} from "@angular/material/icon";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+
 
 
 @NgModule({
@@ -40,8 +40,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     TranslateModule,
     MatButtonModule,
     MatMenuModule,
-    MatIconModule,
-    BrowserAnimationsModule,
+    MatIconModule
   ]
 })
 export class MainModule { }
