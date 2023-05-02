@@ -22,9 +22,23 @@ mat-nav-list > a{
   margin-right: 5px !important;
 }
 
+// BUTTON MENU
 .buttonMenu{
-  color: black;
+  color: $navy-blue-90;
+  margin-left: auto;
 }
+.languagePanel{
+  column-gap: 5px;
+  mat-panel-title{
+    margin: 0;
+    justify-content: space-evenly;
+  }
+  padding-left: 10px;
+  padding-right: 10px;
+  justify-content: space-evenly;
+}
+
+// OTHERS
 .logoSVG{
   filter: invert(100%) brightness(200%);
 }

@@ -17,6 +17,7 @@ import {TranslateModule} from "@ngx-translate/core";
 import {MatButtonModule} from "@angular/material/button";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatIconModule} from "@angular/material/icon";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 
 
@@ -39,8 +40,9 @@ import {MatIconModule} from "@angular/material/icon";
     MatListModule,
     TranslateModule,
     MatButtonModule,
+    MatIconModule,
     MatMenuModule,
-    MatIconModule
+    MatExpansionModule
   ]
 })
 export class MainModule { }

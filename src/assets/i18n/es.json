@@ -1,5 +1,9 @@
 {
   "sidenav_applications": "Applicaciones",
   "sidenav_candidates": "Candidatos",
-  "sidenav_positions": "Posiciones"
+  "sidenav_positions": "Posiciones",
+  "main_button_menu_language": "Idioma",
+  "main_button_menu_language_english": "Inglés",
+  "main_button_menu_language_spanish": "Español",
+  "main_button_menu_logout": "Cerrar sesión"
 }

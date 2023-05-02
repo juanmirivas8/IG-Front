@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {TranslateService} from "@ngx-translate/core";
 
 
 @Component({
@@ -9,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 export class MainComponent implements OnInit {
   appName: String="INNOVATION GROUP";
 
-  constructor() { }
+  constructor(private translateService: TranslateService) { }
 
   ngOnInit(): void {
   }
 
+  changeLanguage(lang: string) {
+    this.translateService.use(lang);
+  }
 }
