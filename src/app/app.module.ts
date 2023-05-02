@@ -12,6 +12,10 @@ import { Error404Component } from './pages/error404/error404.component';
 import {MainRoutingModule} from "./pages/main/main-routing.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatMenuModule} from "@angular/material/menu";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -36,7 +40,11 @@ import {MatMenuModule} from "@angular/material/menu";
 
     }),
     BrowserAnimationsModule,
-    MatMenuModule
+    MatMenuModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

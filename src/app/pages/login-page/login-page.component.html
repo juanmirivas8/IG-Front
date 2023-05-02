@@ -1,1 +1,29 @@
-<p>login-page works!</p>
+<div class="InicioSesion">
+  <div >
+    <img src="assets/images/IG_Logo_2022.png" class="imagen">
+
+    <form class="example-form separar" >
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput placeholder="Ex. pat@example.com">
+        <mat-hint>Errors appear instantly!</mat-hint>
+      </mat-form-field>
+    </form>
+
+    <mat-form-field appearance="fill" class="separar">
+      <mat-label>Enter your password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <section>
+      <div class="example-button-row">
+        <button mat-raised-button color="primary" class="separar">Inicia Sesión</button>
+        <button mat-raised-button color="primary" class="separar">Registrar</button>
+      </div>
+    </section>
+  </div>
+</div>

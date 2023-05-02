@@ -1,0 +1,44 @@
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 60%;
+
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.example-button-row {
+  width: 500px;
+  margin-bottom: 10%;
+}
+
+.InicioSesion {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 150px;
+  max-width: 500px;
+  width: 600%;
+  -webkit-box-shadow: 0px 0px 43px 0px rgba(184, 184, 184, 1);
+  -moz-box-shadow: 0px 0px 43px 0px rgba(184, 184, 184, 1);
+  box-shadow: 0px 0px 43px 0px rgba(184, 184, 184, 1);
+
+  border-radius: 20px 20px 20px 20px;
+  -moz-border-radius: 20px 20px 20px 20px;
+  -webkit-border-radius: 20px 20px 20px 20px;
+  border: 0px solid #000000;
+  margin-left: 30px;
+}
+
+.separar {
+  margin-top: 20px;
+  width: 70%;
+  margin-left: 14%;
+}
+
+.imagen {
+  width: 100%;
+}

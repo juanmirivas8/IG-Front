@@ -7,7 +7,7 @@ import {GuestPageComponent} from "./pages/guest-page/guest-page.component";
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'main',
+    redirectTo: 'login',
     pathMatch: 'full',
   },
   { path: 'main', loadChildren: () => import('./pages/main/main.module').then(m => m.MainModule) }
