@@ -5,6 +5,8 @@
   "main_button_menu_language": "Language",
   "main_button_menu_language_english": "English",
   "main_button_menu_language_spanish": "Spanish",
-  "main_button_menu_logout": "Logout"
+  "main_button_menu_logout": "Logout",
+
+  "login_SignIn_Button": "Sign In"
 }
 

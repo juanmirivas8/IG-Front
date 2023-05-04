@@ -1,29 +1,28 @@
-<div class="InicioSesion">
-  <div >
-    <img src="assets/images/IG_Logo_2022.png" class="imagen">
+<div class="parent">
+  <div class="top">
+    <button mat-icon-button>
+      <mat-icon>language</mat-icon>
+    </button>
+  </div>
 
-    <form class="example-form separar" >
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Email</mat-label>
-        <input type="email" matInput placeholder="Ex. pat@example.com">
-        <mat-hint>Errors appear instantly!</mat-hint>
+  <div class="center">
+    <img src="assets/images/IG_Logo_2022.png" class="companyLogo">
+    <form>
+      <mat-form-field class="formField" appearance="outline">
+        <mat-icon matPrefix>sentiment_very_satisfied</mat-icon>
+        <mat-label>Outline form field</mat-label>
+        <input matInput placeholder="Placeholder" type="email">
+        <mat-hint>Hint</mat-hint>
       </mat-form-field>
+
+      <mat-form-field class="formField" appearance="outline">
+        <mat-icon matPrefix>sentiment_very_satisfied</mat-icon>
+        <mat-label>Outline form field</mat-label>
+        <input matInput placeholder="Placeholder" type="email">
+        <mat-hint>Hint</mat-hint>
+      </mat-form-field>
+
+      <div class="buttonAlignment"><button mat-raised-button class="signInButton">{{"login_SignIn_Button"|translate}}</button></div>
     </form>
-
-    <mat-form-field appearance="fill" class="separar">
-      <mat-label>Enter your password</mat-label>
-      <input matInput [type]="hide ? 'password' : 'text'">
-      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-              [attr.aria-pressed]="hide">
-        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-      </button>
-    </mat-form-field>
-
-    <section>
-      <div class="example-button-row">
-        <button mat-raised-button color="primary" class="separar">Inicia Sesión</button>
-        <button mat-raised-button color="primary" class="separar">Registrar</button>
-      </div>
-    </section>
   </div>
 </div>

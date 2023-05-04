@@ -5,5 +5,6 @@
   "main_button_menu_language": "Idioma",
   "main_button_menu_language_english": "Inglés",
   "main_button_menu_language_spanish": "Español",
-  "main_button_menu_logout": "Cerrar sesión"
-}
+  "main_button_menu_logout": "Cerrar sesión",
+
+  "login_SignIn_Button": "Iniciar sesión"
