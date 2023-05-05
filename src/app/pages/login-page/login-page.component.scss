@@ -3,8 +3,7 @@
   background-color: $navy-blue-20;
   height: 100%;
   display:grid;
-  grid-template-rows: min-content 1fr;
-
+  grid-template-rows: 50px 1fr;
 }
 
 .top{
@@ -51,6 +50,25 @@ form{
   background-color: $white !important; /* replace red with the color you want */
 }
 
+.iconsColor{
+  color: $blue;
+}
+
+
+.languagePanel{
+  background-color: $navy-blue-20;
+  box-shadow: none !important;
+  mat-expansion-panel-header{
+    .mat-content{
+      width: min-content;
+      mat-panel-title{
+        margin: 0 !important;
+        justify-content: center;
+        width: min-content;
+      }
+    }
+  }
+}
 
 
 

@@ -1,28 +1,40 @@
 <div class="parent">
   <div class="top">
-    <button mat-icon-button>
-      <mat-icon>language</mat-icon>
-    </button>
+      <mat-expansion-panel class="languagePanel" [hideToggle]="true" >
+        <mat-expansion-panel-header (click)="$event.stopPropagation()" expandedHeight="40px" collapsedHeight="40px">
+          <mat-panel-title>
+            <mat-icon>language</mat-icon>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item (click)="changeLanguage('en')" ><span>{{'main_button_menu_language_english'|translate}}</span></a>
+          <a mat-list-item (click)="changeLanguage('es')" ><span>{{'main_button_menu_language_spanish'|translate}}</span></a>
+        </mat-nav-list>
+      </mat-expansion-panel>
   </div>
 
   <div class="center">
     <img src="assets/images/IG_Logo_2022.png" class="companyLogo">
-    <form>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <mat-form-field class="formField" appearance="outline">
-        <mat-icon matPrefix>sentiment_very_satisfied</mat-icon>
-        <mat-label>Outline form field</mat-label>
-        <input matInput placeholder="Placeholder" type="email">
-        <mat-hint>Hint</mat-hint>
+        <mat-icon matPrefix class="iconsColor">perm_identity</mat-icon>
+        <mat-label>{{"login_hint_email"|translate}}</mat-label>
+        <input matInput placeholder="{{'login_hint_email' | translate}}" type="email" formControlName="email">
+        <mat-hint>{{"login_hint_email"|translate}}</mat-hint>
+        <mat-error *ngIf="loginForm.get('email')?.getError('required')">{{"login_email_errorHint_required"|translate}}</mat-error>
+        <mat-error *ngIf="loginForm.get('email')?.hasError('email')">{{"login_email_errorHint_invalid"|translate}}</mat-error>
       </mat-form-field>
 
       <mat-form-field class="formField" appearance="outline">
-        <mat-icon matPrefix>sentiment_very_satisfied</mat-icon>
-        <mat-label>Outline form field</mat-label>
-        <input matInput placeholder="Placeholder" type="email">
-        <mat-hint>Hint</mat-hint>
+        <mat-icon matPrefix class="iconsColor">lock</mat-icon>
+        <mat-label>{{"login_hint_password"|translate}}</mat-label>
+        <input matInput placeholder="{{'login_hint_password' | translate}}" type="password" formControlName="password">
+        <mat-hint>{{"login_hint_password"|translate}}</mat-hint>
+        <mat-error *ngIf="loginForm.get('password')?.getError('required')">{{"login_password_errorHint_required"|translate}}</mat-error>
+        <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">{{"login_password_errorHint_invalid"|translate}}</mat-error>
       </mat-form-field>
 
-      <div class="buttonAlignment"><button mat-raised-button class="signInButton">{{"login_SignIn_Button"|translate}}</button></div>
+      <div class="buttonAlignment"><button mat-raised-button class="signInButton" type="submit" [disabled] = "loginForm.invalid">{{"login_SignIn_Button"|translate}}</button></div>
     </form>
   </div>
 </div>

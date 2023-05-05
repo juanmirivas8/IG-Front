@@ -7,6 +7,12 @@
   "main_button_menu_language_spanish": "Spanish",
   "main_button_menu_logout": "Logout",
 
-  "login_SignIn_Button": "Sign In"
+  "login_SignIn_Button": "Sign In",
+  "login_hint_password": "Password",
+  "login_hint_email": "Email",
+  "login_email_errorHint_required": "Email is required",
+  "login_email_errorHint_invalid": "Email is invalid",
+  "login_password_errorHint_required": "Password is required",
+  "login_password_errorHint_invalid": "Password is invalid"
 }
 
