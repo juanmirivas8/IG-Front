@@ -24,6 +24,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {AuthInterceptor} from "./services/auth.interceptor";
 import {JWT_OPTIONS, JwtHelperService, JwtModule} from "@auth0/angular-jwt";
 import {AuthGuard} from "./guards/auth.guard";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -32,33 +33,34 @@ import {AuthGuard} from "./guards/auth.guard";
     LoginPageComponent,
     Error404Component,
   ],
-  imports: [
-    MainRoutingModule,
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    TranslateModule.forRoot({
-      defaultLanguage: 'en',
-      useDefaultLang: true,
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (http: HttpClient) => new TranslateHttpLoader(http),
-        deps: [HttpClient]
-      }
+    imports: [
+        MainRoutingModule,
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        TranslateModule.forRoot({
+            defaultLanguage: 'en',
+            useDefaultLang: true,
+            loader: {
+                provide: TranslateLoader,
+                useFactory: (http: HttpClient) => new TranslateHttpLoader(http),
+                deps: [HttpClient]
+            }
 
-    }),
-    BrowserAnimationsModule,
-    MatMenuModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-    ReactiveFormsModule,
-    MatExpansionModule,
-    MatListModule,
-    MatSnackBarModule,
-    JwtModule
-  ],
+        }),
+        BrowserAnimationsModule,
+        MatMenuModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatIconModule,
+        ReactiveFormsModule,
+        MatExpansionModule,
+        MatListModule,
+        MatSnackBarModule,
+        JwtModule,
+        MatProgressSpinnerModule
+    ],
   providers: [AuthService,
     {
       provide: HTTP_INTERCEPTORS,

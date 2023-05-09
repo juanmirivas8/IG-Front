@@ -15,6 +15,7 @@ import {Router} from "@angular/router";
 })
 export class LoginPageComponent implements OnInit {
 
+  spinner = true;
   constructor(private fb:FormBuilder,private translateService:TranslateService,private authService:AuthService,
               private snack: MatSnackBar, private router:Router) {
     this.loginForm = this.fb.group({

@@ -1,5 +1,5 @@
 <div class="parent">
-  <div class="top">
+  <div class="top" >
       <mat-expansion-panel class="languagePanel" [hideToggle]="true" >
         <mat-expansion-panel-header (click)="$event.stopPropagation()" expandedHeight="40px" collapsedHeight="40px">
           <mat-panel-title>
@@ -14,6 +14,9 @@
   </div>
 
   <div class="center">
+    <div class="overlay" *ngIf="spinner">
+      <mat-spinner></mat-spinner>
+    </div>
     <img src="assets/images/IG_Logo_2022.png" class="companyLogo">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <mat-form-field class="formField" appearance="outline">
