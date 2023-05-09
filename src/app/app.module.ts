@@ -4,7 +4,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
-import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import {TranslateLoader, TranslateModule, TranslateService} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import { GuestPageComponent } from './pages/guest-page/guest-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
@@ -22,6 +22,8 @@ import {MatListModule} from "@angular/material/list";
 import {AuthService} from "./services/auth.service";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {AuthInterceptor} from "./services/auth.interceptor";
+import {JWT_OPTIONS, JwtHelperService, JwtModule} from "@auth0/angular-jwt";
+import {AuthGuard} from "./guards/auth.guard";
 
 @NgModule({
   declarations: [
@@ -54,14 +56,25 @@ import {AuthInterceptor} from "./services/auth.interceptor";
     ReactiveFormsModule,
     MatExpansionModule,
     MatListModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    JwtModule
   ],
   providers: [AuthService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    JwtHelperService,
+    {
+      provide: JWT_OPTIONS,
+      useValue: {
+        tokenGetter: () => {
+          return localStorage.getItem('token');
+        }
+      }
+    },
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

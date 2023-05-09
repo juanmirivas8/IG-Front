@@ -16,7 +16,6 @@ export class AuthInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     let userCookie = localStorage.getItem('user');
     if(userCookie){
-      console.log(userCookie);
       let user: User = JSON.parse(userCookie!);
       request = request.clone({
         setHeaders: {

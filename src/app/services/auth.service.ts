@@ -20,5 +20,4 @@ export class AuthService {
     return this.http.post<Response<User>>(`${environment.api.baseUrl}${environment.api.endpoints.authLogin}`,user);
   }
 
-
 }
