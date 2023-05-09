@@ -13,5 +13,8 @@
   "login_email_errorHint_required": "El correo electrónico es requerido",
   "login_email_errorHint_invalid": "El correo electrónico es inválido",
   "login_password_errorHint_required": "La contraseña es requerida",
-  "login_password_errorHint_invalid": "La contraseña es inválida"
+  "login_password_errorHint_invalid": "La contraseña es inválida",
+  "login_snack_error": "Algo salió mal",
+  "login_snack_error_wrong_username": "El usuario no existe",
+  "login_snack_error_wrong_password": "La contraseña es incorrecta"
 }
