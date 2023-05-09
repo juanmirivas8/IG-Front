@@ -5,5 +5,13 @@
   "main_button_menu_language": "Idioma",
   "main_button_menu_language_english": "Inglés",
   "main_button_menu_language_spanish": "Español",
-  "main_button_menu_logout": "Cerrar sesión"
+  "main_button_menu_logout": "Cerrar sesión",
+
+  "login_SignIn_Button": "Iniciar sesión",
+  "login_hint_password": "Contraseña",
+  "login_hint_email": "Correo electrónico",
+  "login_email_errorHint_required": "El correo electrónico es requerido",
+  "login_email_errorHint_invalid": "El correo electrónico es inválido",
+  "login_password_errorHint_required": "La contraseña es requerida",
+  "login_password_errorHint_invalid": "La contraseña es inválida"
 }

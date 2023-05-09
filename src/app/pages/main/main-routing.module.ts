@@ -7,10 +7,10 @@ import {ApplicationOverviewPageComponent} from "./application-overview-page/appl
 import {PositionInfoPageComponent} from "./position-info-page/position-info-page.component";
 import {CandidateInfoPageComponent} from "./candidate-info-page/candidate-info-page.component";
 import {ApplicationInfoPageComponent} from "./application-info-page/application-info-page.component";
+import {AuthGuard} from "../../guards/auth.guard";
 
-const routes: Routes = [{ path: '', component: MainComponent, children: [
+const routes: Routes = [{ path: 'main',canActivateChild:[AuthGuard], component: MainComponent, children: [
     { path: '', redirectTo: 'positions', pathMatch: 'full' },
-    { path: 'main', component: MainComponent},
     { path: 'positions', component: PositionOverviewPageComponent},
     { path: 'candidates', component: CandidateOverviewPageComponent},
     { path: 'applications', component: ApplicationOverviewPageComponent},
