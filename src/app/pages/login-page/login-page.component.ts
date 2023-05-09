@@ -6,6 +6,8 @@ import {User} from "../../../models/User";
 import {firstValueFrom} from "rxjs";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
+import {HttpErrorResponse} from "@angular/common/http";
+import {Response} from "../../../models/Response";
 
 @Component({
   selector: 'app-login-page',
@@ -16,7 +18,7 @@ import {Router} from "@angular/router";
 export class LoginPageComponent implements OnInit {
 
   spinner = true;
-  constructor(private fb:FormBuilder,private translateService:TranslateService,private authService:AuthService,
+  constructor(private fb:FormBuilder,private translateService:TranslateService,public authService:AuthService,
               private snack: MatSnackBar, private router:Router) {
     this.loginForm = this.fb.group({
       email: new FormControl('',[Validators.required,Validators.email]),
@@ -33,6 +35,7 @@ export class LoginPageComponent implements OnInit {
       username: this.loginForm.value.email,
       password: this.loginForm.value.password,
     }
+    this.authService.isLogging$.next(true);
     firstValueFrom(this.authService.login(user)).then(async (result) => {
       if(localStorage.getItem('user') != null){
         localStorage.removeItem('user');
@@ -44,7 +47,20 @@ export class LoginPageComponent implements OnInit {
       localStorage.setItem('token',userToStore.token!);
       await this.router.navigate(['/main']);
     }).catch(async error =>{
-      await this.snack.open('Error en la peticion','Ok',{duration: 3000});
+      console.log(error);
+      if(error instanceof HttpErrorResponse && error.status == 400){
+        let response = error.error as Response<User>;
+        let message = response.message;
+        if (message == 'Username is wrong'){
+          await this.snack.open(this.translateService.instant('login_snack_error_wrong_username'),'Ok',{duration: 3000});
+        }else if (message == 'Password is wrong') {
+          await this.snack.open(this.translateService.instant('login_snack_error_wrong_password'), 'Ok', {duration: 3000});
+        }
+      }else{
+        await this.snack.open(this.translateService.instant('login_snack_error'), 'Ok', {duration: 3000});
+      }
+    }).finally(()=>{
+      this.authService.isLogging$.next(false);
     });
   }
 

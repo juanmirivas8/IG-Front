@@ -25,6 +25,7 @@ import {AuthInterceptor} from "./services/auth.interceptor";
 import {JWT_OPTIONS, JwtHelperService, JwtModule} from "@auth0/angular-jwt";
 import {AuthGuard} from "./guards/auth.guard";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { OverlaySpinnerComponent } from './components/overlay-spinner/overlay-spinner.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     GuestPageComponent,
     LoginPageComponent,
     Error404Component,
+    OverlaySpinnerComponent,
   ],
     imports: [
         MainRoutingModule,

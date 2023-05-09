@@ -14,9 +14,7 @@
   </div>
 
   <div class="center">
-    <div class="overlay" *ngIf="spinner">
-      <mat-spinner></mat-spinner>
-    </div>
+    <app-overlay-spinner [show]="this.authService.isLogging$|async"></app-overlay-spinner>
     <img src="assets/images/IG_Logo_2022.png" class="companyLogo">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <mat-form-field class="formField" appearance="outline">
