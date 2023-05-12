@@ -26,6 +26,8 @@ import {JWT_OPTIONS, JwtHelperService, JwtModule} from "@auth0/angular-jwt";
 import {AuthGuard} from "./guards/auth.guard";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { OverlaySpinnerComponent } from './components/overlay-spinner/overlay-spinner.component';
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -61,7 +63,9 @@ import { OverlaySpinnerComponent } from './components/overlay-spinner/overlay-sp
         MatListModule,
         MatSnackBarModule,
         JwtModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatTooltipModule,
+        MatSelectModule
     ],
   providers: [AuthService,
     {
