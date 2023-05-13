@@ -16,7 +16,8 @@
   "login_password_errorHint_invalid": "Password is invalid",
   "login_snack_error": "Something went wrong",
   "login_snack_error_wrong_username": "Username does not exists",
-  "login_snack_error_wrong_password": "Wrong password"
+  "login_snack_error_wrong_password": "Wrong password",
+  "breadcrumb_positions": "Positions"
 
 }
 

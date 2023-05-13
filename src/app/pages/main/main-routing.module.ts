@@ -11,7 +11,7 @@ import {AuthGuard} from "../../guards/auth.guard";
 
 const routes: Routes = [{ path: 'main',canActivateChild:[AuthGuard], component: MainComponent, children: [
     { path: '', redirectTo: 'positions', pathMatch: 'full' },
-    { path: 'positions', component: PositionOverviewPageComponent},
+    { path: 'positions', component: PositionOverviewPageComponent,data:{breadcrumb:'breadcrumb_positions'}},
     { path: 'candidates', component: CandidateOverviewPageComponent},
     { path: 'applications', component: ApplicationOverviewPageComponent},
     { path: 'positions/:id', component: PositionInfoPageComponent},

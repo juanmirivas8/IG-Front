@@ -16,5 +16,6 @@
   "login_password_errorHint_invalid": "La contraseña es inválida",
   "login_snack_error": "Algo salió mal",
   "login_snack_error_wrong_username": "El usuario no existe",
-  "login_snack_error_wrong_password": "La contraseña es incorrecta"
+  "login_snack_error_wrong_password": "La contraseña es incorrecta",
+  "breadcrumb_positions": "Posiciones"
 }
