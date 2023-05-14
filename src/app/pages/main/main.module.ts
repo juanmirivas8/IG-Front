@@ -26,6 +26,7 @@ import {MatSortModule} from "@angular/material/sort";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {BreadcrumbModule} from "xng-breadcrumb";
+import {AppModule} from "../../app.module";
 
 
 
@@ -58,7 +59,8 @@ import {BreadcrumbModule} from "xng-breadcrumb";
     MatSortModule,
     MatPaginatorModule,
     MatTooltipModule,
-    BreadcrumbModule
+    BreadcrumbModule,
+    AppModule
   ]
 })
 export class MainModule { }

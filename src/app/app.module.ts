@@ -28,6 +28,8 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { OverlaySpinnerComponent } from './components/overlay-spinner/overlay-spinner.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatSelectModule} from "@angular/material/select";
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+import {BreadcrumbModule} from "xng-breadcrumb";
 
 @NgModule({
   declarations: [
@@ -36,37 +38,39 @@ import {MatSelectModule} from "@angular/material/select";
     LoginPageComponent,
     Error404Component,
     OverlaySpinnerComponent,
+    BreadcrumbComponent,
   ],
-    imports: [
-        MainRoutingModule,
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        TranslateModule.forRoot({
-            defaultLanguage: 'en',
-            useDefaultLang: true,
-            loader: {
-                provide: TranslateLoader,
-                useFactory: (http: HttpClient) => new TranslateHttpLoader(http),
-                deps: [HttpClient]
-            }
+  imports: [
+    MainRoutingModule,
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      useDefaultLang: true,
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (http: HttpClient) => new TranslateHttpLoader(http),
+        deps: [HttpClient]
+      }
 
-        }),
-        BrowserAnimationsModule,
-        MatMenuModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatButtonModule,
-        MatIconModule,
-        ReactiveFormsModule,
-        MatExpansionModule,
-        MatListModule,
-        MatSnackBarModule,
-        JwtModule,
-        MatProgressSpinnerModule,
-        MatTooltipModule,
-        MatSelectModule
-    ],
+    }),
+    BrowserAnimationsModule,
+    MatMenuModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    ReactiveFormsModule,
+    MatExpansionModule,
+    MatListModule,
+    MatSnackBarModule,
+    JwtModule,
+    MatProgressSpinnerModule,
+    MatTooltipModule,
+    MatSelectModule,
+    BreadcrumbModule
+  ],
   providers: [AuthService,
     {
       provide: HTTP_INTERCEPTORS,
@@ -83,6 +87,9 @@ import {MatSelectModule} from "@angular/material/select";
       }
     },
     AuthGuard
+  ],
+  exports: [
+    BreadcrumbComponent
   ],
   bootstrap: [AppComponent]
 })

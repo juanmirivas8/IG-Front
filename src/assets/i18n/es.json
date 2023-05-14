@@ -1,5 +1,5 @@
 {
-  "sidenav_applications": "Applicaciones",
+  "sidenav_applications": "Aplicaciones",
   "sidenav_candidates": "Candidatos",
   "sidenav_positions": "Posiciones",
   "main_button_menu_language": "Idioma",
@@ -17,5 +17,15 @@
   "login_snack_error": "Algo salió mal",
   "login_snack_error_wrong_username": "El usuario no existe",
   "login_snack_error_wrong_password": "La contraseña es incorrecta",
-  "breadcrumb_positions": "Posiciones"
+
+  "breadcrumb_positions": "Posiciones",
+  "breadcrumb_candidates": "Candidatos",
+  "breadcrumb_applications": "Aplicaciones",
+  "breadcrumb_positionInfo": "Posición",
+  "breadcrumb_candidateInfo": "Candidato",
+  "breadcrumb_applicationInfo": "Aplicación",
+  "breadcrumb_newCandidate": "Nuevo Candidato",
+  "breadcrumb_newPosition": "Nueva Posición",
+  "breadcrumb_newApplication": "Nueva Aplicación",
+  "breadcrumb_main": "Inicio"
 }

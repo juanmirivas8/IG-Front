@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {TranslateService} from "@ngx-translate/core";
+import {BreadcrumbService} from "xng-breadcrumb";
+import {firstValueFrom} from "rxjs";
 
 
 @Component({
@@ -7,14 +9,11 @@ import {TranslateService} from "@ngx-translate/core";
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit {
-  appName: String="INNOVATION GROUP";
+export class MainComponent{
+  appName: string="INNOVATION GROUP";
 
-  constructor(private translateService: TranslateService) { }
-
-  ngOnInit(): void {
+  constructor(private translateService: TranslateService) {
   }
-
   changeLanguage(lang: string) {
     this.translateService.use(lang);
   }

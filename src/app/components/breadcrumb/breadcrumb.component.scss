@@ -1,0 +1,12 @@
+@import "colors";
+.breadcrumbContainer{
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  background-color: $white;
+  padding-left: 25px;
+  padding-top:5px;
+  h1{
+    font-weight: bold;
+  }
+}

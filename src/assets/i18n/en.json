@@ -17,7 +17,16 @@
   "login_snack_error": "Something went wrong",
   "login_snack_error_wrong_username": "Username does not exists",
   "login_snack_error_wrong_password": "Wrong password",
-  "breadcrumb_positions": "Positions"
+  "breadcrumb_positions": "Positions",
+  "breadcrumb_candidates": "Candidates",
+  "breadcrumb_applications": "Applications",
+  "breadcrumb_positionInfo": "Position",
+  "breadcrumb_candidateInfo": "Candidate",
+  "breadcrumb_applicationInfo": "Application",
+  "breadcrumb_newCandidate": "New Candidate",
+  "breadcrumb_newPosition": "New Position",
+  "breadcrumb_newApplication": "New Application",
+  "breadcrumb_main": "Home"
 
 }
 

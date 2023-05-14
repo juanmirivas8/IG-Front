@@ -39,3 +39,8 @@ $IGFront-theme: mat.define-light-theme((
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.xng-breadcrumb-list{
+  .xng-breadcrumb-item:last-of-type{
+    font-weight: bold;
+  }
+}
