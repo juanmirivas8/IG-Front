@@ -27,5 +27,12 @@
   "breadcrumb_newCandidate": "Nuevo Candidato",
   "breadcrumb_newPosition": "Nueva Posición",
   "breadcrumb_newApplication": "Nueva Aplicación",
-  "breadcrumb_main": "Inicio"
+  "breadcrumb_main": "Inicio",
+
+  "position-table-openPositions": "Posiciones Abiertas",
+  "position-table-closedPositions": "Posiciones Cerradas",
+  "position-table-reset": "Reiniciar",
+  "position-table-addPosition": "Añadir Posición",
+  "position-table-showHelpText": "Mostrar:",
+  "position-table-searchHint": "Buscar"
 }

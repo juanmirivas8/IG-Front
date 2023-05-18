@@ -30,6 +30,12 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatSelectModule} from "@angular/material/select";
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import {BreadcrumbModule} from "xng-breadcrumb";
+import { PositionTableComponent } from './components/position-table/position-table.component';
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatTableModule} from "@angular/material/table";
+import {MatSortModule} from "@angular/material/sort";
+import {MatTabsModule} from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
@@ -39,38 +45,44 @@ import {BreadcrumbModule} from "xng-breadcrumb";
     Error404Component,
     OverlaySpinnerComponent,
     BreadcrumbComponent,
+    PositionTableComponent,
   ],
-  imports: [
-    MainRoutingModule,
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    TranslateModule.forRoot({
-      defaultLanguage: 'en',
-      useDefaultLang: true,
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (http: HttpClient) => new TranslateHttpLoader(http),
-        deps: [HttpClient]
-      }
+    imports: [
+        MainRoutingModule,
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        TranslateModule.forRoot({
+            defaultLanguage: 'en',
+            useDefaultLang: true,
+            loader: {
+                provide: TranslateLoader,
+                useFactory: (http: HttpClient) => new TranslateHttpLoader(http),
+                deps: [HttpClient]
+            }
 
-    }),
-    BrowserAnimationsModule,
-    MatMenuModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-    ReactiveFormsModule,
-    MatExpansionModule,
-    MatListModule,
-    MatSnackBarModule,
-    JwtModule,
-    MatProgressSpinnerModule,
-    MatTooltipModule,
-    MatSelectModule,
-    BreadcrumbModule
-  ],
+        }),
+        BrowserAnimationsModule,
+        MatMenuModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatIconModule,
+        ReactiveFormsModule,
+        MatExpansionModule,
+        MatListModule,
+        MatSnackBarModule,
+        JwtModule,
+        MatProgressSpinnerModule,
+        MatTooltipModule,
+        MatSelectModule,
+        BreadcrumbModule,
+        MatPaginatorModule,
+        MatCheckboxModule,
+        MatTableModule,
+        MatSortModule,
+        MatTabsModule
+    ],
   providers: [AuthService,
     {
       provide: HTTP_INTERCEPTORS,
@@ -89,7 +101,8 @@ import {BreadcrumbModule} from "xng-breadcrumb";
     AuthGuard
   ],
   exports: [
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    PositionTableComponent
   ],
   bootstrap: [AppComponent]
 })

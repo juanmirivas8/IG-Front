@@ -1,0 +1,59 @@
+@import "colors";
+.container{
+  display:flex;
+  flex-direction:column;
+  margin: 0;
+  row-gap: 15px;
+}
+
+.search-bar{
+  display:flex;
+  align-items: center;
+  column-gap: 10px;
+  background-color: $white;
+  h4{
+    margin:0;
+  }
+}
+
+.table{
+  background-color: $white;
+
+}
+
+.tableHeader{
+  display:flex;
+  align-items: center;
+  h4{
+    margin:0;
+  }
+  padding: 10px;
+}
+.spacer{
+  margin-left: auto;
+}
+
+.mat-table{
+  display: flex;
+  flex-direction: column;
+  th{
+    text-align: center;
+  }
+  td {
+    text-align: center;
+  }
+}
+.mat-row{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 10px;
+}
+.mat-header-row{
+  background-color: $grey;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-bottom: 1px solid $dark-grey;
+  column-gap: 10px;
+}

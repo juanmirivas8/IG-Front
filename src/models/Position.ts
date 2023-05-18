@@ -21,4 +21,7 @@ export class Position {
   public lastUpdate?: Date;
   public applications?:Application[];
 
+   public static getKeys(): string[]{
+     return ["id","project","area","rol","subRol","localization","status","description","vacancies","creationDate","closingDate","lastUpdate"];
+   }
 }
