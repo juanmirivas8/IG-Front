@@ -16,6 +16,7 @@ export class PositionTableComponent implements OnInit,AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
   columnsToDisplay: string[] = ['select','project', 'status','id'];
   displayedColumns: string[] = ['select','project', 'status','id'];
+  filterColumns: string[] = [];
   dataSource :MatTableDataSource<Position>;
   selection = new SelectionModel<Position>(true, [],true);
   filterNameHint: string = "Search by ID";
@@ -59,10 +60,38 @@ export class PositionTableComponent implements OnInit,AfterViewInit {
 
   applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filterPredicate = (data: Position, filter: string)=>{return data.id == Number.parseInt(filter);}
+    var allColumns = this.filterColumns.length == 0;
+    // @ts-ignore
+    this.dataSource.filterPredicate = (data: Position, filter: string)=>{
+      return ((allColumns||this.filterColumns.includes('id')) && data.id == Number.parseInt(filter))||
+        ((allColumns||this.filterColumns.includes('project')) && data.project?.name.toLowerCase().includes(filter))||
+        ((allColumns||this.filterColumns.includes('status')) && data.status?.name.toLowerCase().includes(filter))||
+        ((allColumns||this.filterColumns.includes('description')) && data.description?.toLowerCase().includes(filter))||
+        ((allColumns||this.filterColumns.includes('vacancies')) && data.vacancies == Number.parseInt(filter))||
+        ((allColumns||this.filterColumns.includes('creationDate')) && data.creationDate?.toLocaleString().toLowerCase().includes(filter))||
+        ((allColumns||this.filterColumns.includes('closingDate')) && data.closingDate?.toLocaleString().toLowerCase().includes(filter))||
+        ((allColumns||this.filterColumns.includes('lastUpdate')) && data.lastUpdate?.toLocaleString().toLowerCase().includes(filter))||
+        ((allColumns||this.filterColumns.includes('area')) && data.area?.name.toLowerCase().includes(filter))||
+        ((allColumns||this.filterColumns.includes('rol')) && data.rol?.name.toLowerCase().includes(filter))||
+        ((allColumns||this.filterColumns.includes('subRol')) && data.subRol?.name.toLowerCase().includes(filter))||
+        ((allColumns||this.filterColumns.includes('localization')) && data.localization?.name.toLowerCase().includes(filter));
+    }
     this.dataSource.filter = filterValue.trim().toLowerCase();
     if(this.dataSource.paginator){
       this.dataSource.paginator.firstPage();
+    }
+  }
+
+  handleCheckboxChange(event: any, column: string) {
+    if (event.checked) {
+      // Add the column to the checked items array
+      this.filterColumns.push(column);
+    } else {
+      // Remove the column from the checked items array
+      const index = this.filterColumns.indexOf(column);
+      if (index >= 0) {
+        this.filterColumns.splice(index, 1);
+      }
     }
   }
 }

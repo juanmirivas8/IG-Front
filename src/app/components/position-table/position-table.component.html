@@ -13,8 +13,8 @@
       <mat-icon>settings</mat-icon>
     </button>
     <mat-menu #filter>
-      <button mat-menu-item *ngFor="let column of columnsToDisplay" (click)="toggleColumn(column)">
-        <mat-checkbox></mat-checkbox>
+      <button mat-menu-item *ngFor="let column of columnsToDisplay">
+        <mat-checkbox (click)="$event.stopPropagation()" (change)="handleCheckboxChange($event, column)"></mat-checkbox>
         {{ column }}
       </button>
     </mat-menu>
