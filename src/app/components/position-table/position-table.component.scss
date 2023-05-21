@@ -18,12 +18,12 @@
 
 .table{
   background-color: $white;
-
 }
 
 .tableHeader{
   display:flex;
   align-items: center;
+  column-gap: 5px;
   h4{
     margin:0;
   }
@@ -40,8 +40,9 @@
     text-align: center;
   }
   td {
-    text-align: center;
+    text-align: left;
   }
+  overflow: auto;
 }
 .mat-row{
   display: flex;
@@ -56,4 +57,69 @@
   justify-content: flex-start;
   border-bottom: 1px solid $dark-grey;
   column-gap: 10px;
+}
+.mat-header-cell{
+  border-right: 1px solid $dark-grey;
+  border-bottom: none;
+  &:last-child{
+    border-right: none;
+  }
+}
+
+.mat-sort-header-container{
+  justify-content: center !important;
+}
+.mat-cell{
+  border-bottom: none;
+  border-right: 1px solid $white;
+}
+.mat-column-select{
+  width: 50px !important;
+  padding: 0 !important;
+  display: flex;
+  justify-content: center;
+}
+.mat-column-area{
+  width: 5%;
+  flex-grow: 1;
+}
+.mat-column-project{
+  width: 5%;
+  flex-grow: 1;
+}
+.mat-column-rol{
+  width: 5%;
+  flex-grow: 1;
+}
+.mat-column-subRol{
+  width: 5%;
+  flex-grow: 1;
+}
+.mat-column-localization{
+  width: 5%;
+  flex-grow: 1;
+}
+.mat-column-status{
+  width: 5%;
+  flex-grow: 1;
+}
+.mat-column-description{
+  width: 35%;
+  flex-grow: 5;
+}
+.mat-column-vacancies{
+  width: 5%;
+  flex-grow: 1;
+}
+.mat-column-creationDate{
+  width: 5%;
+  flex-grow: 1;
+}
+.mat-column-closingDate{
+  width: 5%;
+  flex-grow: 1;
+}
+.mat-column-lastUpdate{
+  width: 5%;
+  flex-grow: 1;
 }

@@ -23,7 +23,9 @@ export class PositionTableComponent implements OnInit,AfterViewInit {
   constructor(private positionService: PositionService) {
     this.dataSource = new MatTableDataSource<Position>(this.positionService.positions);
     this.columnsToDisplay = Position.getKeys();
+    this.columnsToDisplay.fill('select',0,1);
     this.displayedColumns = Position.getKeys();
+    this.displayedColumns.fill('select',0,1);
   }
 
   ngOnInit(): void {
