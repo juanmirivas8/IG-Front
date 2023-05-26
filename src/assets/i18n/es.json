@@ -29,10 +29,24 @@
   "breadcrumb_newApplication": "Nueva Aplicación",
   "breadcrumb_main": "Inicio",
 
-  "position-table-openPositions": "Posiciones Abiertas",
-  "position-table-closedPositions": "Posiciones Cerradas",
-  "position-table-reset": "Reiniciar",
-  "position-table-addPosition": "Añadir Posición",
-  "position-table-showHelpText": "Mostrar:",
-  "position-table-searchHint": "Buscar"
+  "position_table_openPositions": "Posiciones Abiertas",
+  "position_table_closedPositions": "Posiciones Cerradas",
+  "position_table_reset": "Reiniciar",
+  "position_table_addPosition": "Añadir Posición",
+  "position_table_showHelpText": "Mostrar:",
+  "position_table_searchHint": "Buscar",
+  "position_table_searchByPrefix": "Buscar por",
+
+  "position_field_id": "Id",
+  "position_field_description": "Descripcion",
+  "position_field_status": "Estado",
+  "position_field_creationDate": "Fecha de Creación",
+  "position_field_lastUpdate": "Última Actualización",
+  "position_field_closingDate": "Fecha de Cierre",
+  "position_field_vacancies": "Vacantes",
+  "position_field_localization": "Localización",
+  "position_field_area": "Area",
+  "position_field_rol": "Rol",
+  "position_field_subrol": "Subrol",
+  "position_field_project": "Proyecto"
 }

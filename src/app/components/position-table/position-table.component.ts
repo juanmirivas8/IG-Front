@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {MatTableDataSource} from "@angular/material/table";
@@ -14,21 +14,50 @@ import {PositionService} from "../../services/position.service";
 export class PositionTableComponent implements OnInit,AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  columnsToDisplay: string[] = ['select','project', 'status','id'];
-  displayedColumns: string[] = ['select','project', 'status','id'];
-  filterColumns: string[] = [];
+  @Input() multipleSelection: boolean = true;
+  availableColumns: string[] = [];
+  @Input() displayedColumns: string[] = [];
   dataSource :MatTableDataSource<Position>;
   selection = new SelectionModel<Position>(true, [],true);
-  filterNameHint: string = "Search by ID";
+  filterSelection = new SelectionModel<string>(true, [],true);
+  filterNameHint: string = "";
+  filterNameHintOptions: string[] = [
+  "position_field_id",
+  "position_field_description",
+  "position_field_status",
+  "position_field_creationDate",
+  "position_field_lastUpdate",
+  "position_field_closingDate",
+  "position_field_vacancies",
+  "position_field_localization",
+  "position_field_area",
+  "position_field_rol",
+  "position_field_subrol",
+  "position_field_project"
+  ];
   constructor(private positionService: PositionService) {
     this.dataSource = new MatTableDataSource<Position>(this.positionService.positions);
-    this.columnsToDisplay = Position.getKeys();
-    this.columnsToDisplay.fill('select',0,1);
+    this.availableColumns = Position.getKeys();
+    this.availableColumns.unshift('select');
     this.displayedColumns = Position.getKeys();
-    this.displayedColumns.fill('select',0,1);
+    this.displayedColumns.unshift('select');
+    this.filterSelection.toggle('id');
+    this.filterNameHint = this.filterNameHintOptions[0];
   }
 
   ngOnInit(): void {
+    this.dataSource.sortingDataAccessor = (item, property) => {
+      switch(property) {
+        case 'project': return item.project?.name;
+        case 'area': return item.area?.name;
+        case 'rol': return item.rol?.name;
+        case 'subRol': return item.subRol?.name;
+        case 'localization': return item.localization?.name;
+        case 'status': return item.status?.name;
+        default: // @ts-ignore
+          return item[property];
+      }
+    }
   }
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
@@ -43,57 +72,81 @@ export class PositionTableComponent implements OnInit,AfterViewInit {
     if (index !== -1) {
       this.displayedColumns.splice(index, 1);
     } else {
-      const columnIndex = this.columnsToDisplay.indexOf(column);
+      const columnIndex = this.availableColumns.indexOf(column);
       if (columnIndex !== -1) {
         this.displayedColumns.splice(columnIndex, 0, column);
       }
     }
   }
-
   isAllSelected(): boolean {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
     return numSelected === numRows;
   }
-
   masterToggle(): void {
-    this.isAllSelected() ? this.selection.clear() : this.dataSource.data.forEach(row => this.selection.select(row));
+    if(this.multipleSelection){
+      this.isAllSelected() ? this.selection.clear() : this.dataSource.data.forEach(row => this.selection.select(row));
+    }else{
+      this.selection.clear();
+    }
+  }
+  toggleRowSelection(row:any){
+    if(this.multipleSelection){
+      this.selection.toggle(row);
+    }else{
+      let wasSelected = this.selection.isSelected(row);
+      this.selection.clear();
+      if(!wasSelected){
+        this.selection.select(row);
+      }
+    }
+  }
+  toggleFilterSelection(filter:string){
+    let wasSelected = this.filterSelection.isSelected(filter);
+    if(!wasSelected){
+      this.filterSelection.clear();
+      this.filterSelection.select(filter);
+      switch (this.filterSelection.selected[0]) {
+        case 'id': this.filterNameHint = this.filterNameHintOptions[0]; break;
+        case 'project': this.filterNameHint = this.filterNameHintOptions[11]; break;
+        case 'status': this.filterNameHint = this.filterNameHintOptions[2]; break;
+        case 'description': this.filterNameHint = this.filterNameHintOptions[1]; break;
+        case 'vacancies': this.filterNameHint = this.filterNameHintOptions[6]; break;
+        case 'creationDate': this.filterNameHint = this.filterNameHintOptions[3]; break;
+        case 'closingDate': this.filterNameHint = this.filterNameHintOptions[5]; break;
+        case 'lastUpdate': this.filterNameHint = this.filterNameHintOptions[4]; break;
+        case 'localization': this.filterNameHint = this.filterNameHintOptions[7]; break;
+        case 'area': this.filterNameHint = this.filterNameHintOptions[8]; break;
+        case 'rol': this.filterNameHint = this.filterNameHintOptions[9]; break;
+        case 'subrol': this.filterNameHint = this.filterNameHintOptions[10]; break;
+      }
+    }
   }
 
   applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
-    var allColumns = this.filterColumns.length == 0;
+    let selectedFilter = this.filterSelection.selected[0];
+
     // @ts-ignore
     this.dataSource.filterPredicate = (data: Position, filter: string)=>{
-      return ((allColumns||this.filterColumns.includes('id')) && data.id == Number.parseInt(filter))||
-        ((allColumns||this.filterColumns.includes('project')) && data.project?.name.toLowerCase().includes(filter))||
-        ((allColumns||this.filterColumns.includes('status')) && data.status?.name.toLowerCase().includes(filter))||
-        ((allColumns||this.filterColumns.includes('description')) && data.description?.toLowerCase().includes(filter))||
-        ((allColumns||this.filterColumns.includes('vacancies')) && data.vacancies == Number.parseInt(filter))||
-        ((allColumns||this.filterColumns.includes('creationDate')) && data.creationDate?.toLocaleString().toLowerCase().includes(filter))||
-        ((allColumns||this.filterColumns.includes('closingDate')) && data.closingDate?.toLocaleString().toLowerCase().includes(filter))||
-        ((allColumns||this.filterColumns.includes('lastUpdate')) && data.lastUpdate?.toLocaleString().toLowerCase().includes(filter))||
-        ((allColumns||this.filterColumns.includes('area')) && data.area?.name.toLowerCase().includes(filter))||
-        ((allColumns||this.filterColumns.includes('rol')) && data.rol?.name.toLowerCase().includes(filter))||
-        ((allColumns||this.filterColumns.includes('subRol')) && data.subRol?.name.toLowerCase().includes(filter))||
-        ((allColumns||this.filterColumns.includes('localization')) && data.localization?.name.toLowerCase().includes(filter));
+      switch (selectedFilter) {
+        case 'id': return data.id == Number.parseInt(filter);
+        case 'project': return data.project?.name.toLowerCase().includes(filter);
+        case 'status': return data.status?.name.toLowerCase().includes(filter);
+        case 'description': return data.description?.toLowerCase().includes(filter);
+        case 'vacancies': return data.vacancies == Number.parseInt(filter);
+        case 'creationDate': return data.creationDate?.toLocaleString().toLowerCase().includes(filter);
+        case 'closingDate': return data.closingDate?.toLocaleString().toLowerCase().includes(filter);
+        case 'lastUpdate': return data.lastUpdate?.toLocaleString().toLowerCase().includes(filter);
+        case 'localization': return data.localization?.name.toLowerCase().includes(filter);
+        case 'area': return data.area?.name.toLowerCase().includes(filter);
+        case 'rol': return data.rol?.name.toLowerCase().includes(filter);
+        case 'subRol': return data.subRol?.name.toLowerCase().includes(filter);
+      }
     }
     this.dataSource.filter = filterValue.trim().toLowerCase();
     if(this.dataSource.paginator){
       this.dataSource.paginator.firstPage();
-    }
-  }
-
-  handleCheckboxChange(event: any, column: string) {
-    if (event.checked) {
-      // Add the column to the checked items array
-      this.filterColumns.push(column);
-    } else {
-      // Remove the column from the checked items array
-      const index = this.filterColumns.indexOf(column);
-      if (index >= 0) {
-        this.filterColumns.splice(index, 1);
-      }
     }
   }
 }

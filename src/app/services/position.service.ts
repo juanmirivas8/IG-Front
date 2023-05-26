@@ -606,7 +606,7 @@ export class PositionService {
       status: { id: 2, name: "Status 2" },
       description: "Position description 1",
       vacancies: 2,
-      creationDate: new Date(),
+      creationDate: new Date("2020-01-01"),
       closingDate: new Date(),
       lastUpdate: new Date(),
     },

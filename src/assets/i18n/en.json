@@ -28,12 +28,26 @@
   "breadcrumb_newApplication": "New Application",
   "breadcrumb_main": "Home",
 
-  "position-table-openPositions": "Open Positions",
-  "position-table-closedPositions": "Closed Positions",
-  "position-table-reset": "Reset",
-  "position-table-addPosition": "Add Position",
-  "position-table-showHelpText": "Show:",
-  "position-table-searchHint": "Search"
+  "position_table_openPositions": "Open Positions",
+  "position_table_closedPositions": "Closed Positions",
+  "position_table_reset": "Reset",
+  "position_table_addPosition": "Add Position",
+  "position_table_showHelpText": "Show:",
+  "position_table_searchHint": "Search",
+  "position_table_searchByPrefix": "Search by",
+
+  "position_field_id": "Id",
+  "position_field_description": "Description",
+  "position_field_status": "Status",
+  "position_field_creationDate": "Creation Date",
+  "position_field_lastUpdate": "Last Update",
+  "position_field_closingDate": "Closing Date",
+  "position_field_vacancies": "Vacancies",
+  "position_field_localization": "Localization",
+  "position_field_area": "Area",
+  "position_field_rol": "Rol",
+  "position_field_subrol": "Subrol",
+  "position_field_project": "Project"
 
 }
 
