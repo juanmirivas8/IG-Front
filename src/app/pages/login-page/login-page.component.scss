@@ -1,0 +1,75 @@
+@import "colors";
+.parent{
+  background-color: $navy-blue-20;
+  height: 100%;
+  display:grid;
+  grid-template-rows: 50px 1fr;
+}
+
+.top{
+  justify-self: end;
+  position: relative;
+}
+
+.center{
+  justify-self: center;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 30px;
+  position: relative;
+}
+
+.companyLogo{
+  width: 50%;
+}
+
+form{
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  justify-content: center;
+  align-items: center;
+  .formField{
+    width: 50%;
+  }
+
+  .buttonAlignment{
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    .signInButton{
+      background-color: $blue;
+      color: $white;
+    }
+  }
+}
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  background-color: $white !important; /* replace red with the color you want */
+}
+
+.iconsColor{
+  color: $blue;
+}
+
+
+.languagePanel{
+  background-color: $navy-blue-20;
+  box-shadow: none !important;
+  mat-expansion-panel-header{
+    .mat-content{
+      width: min-content;
+      mat-panel-title{
+        margin: 0 !important;
+        justify-content: center;
+        width: min-content;
+      }
+    }
+  }
+}
+
+
+

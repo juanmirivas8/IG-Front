@@ -1,0 +1,59 @@
+@import "colors";
+
+//TOOLBAR
+.toolbar{
+  display: flex;
+  flex-direction: row;
+  border-bottom: 2px solid $navy-blue-90;
+}
+.mat-toolbar.mat-primary {
+  background: $white !important;
+}
+
+//SIDENAV
+mat-sidenav-container {
+  top: 64px !important;
+}
+mat-nav-list > a{
+  font-family: NeueHaasUnicaProRegular !important;
+}
+
+.buttonLogo{
+  margin-right: 5px !important;
+}
+
+// BUTTON MENU
+.buttonMenu{
+  color: $navy-blue-90;
+  margin-left: auto;
+}
+.languagePanel{
+  column-gap: 5px;
+  mat-panel-title{
+    margin: 0;
+    justify-content: space-evenly;
+  }
+  padding-left: 10px;
+  padding-right: 10px;
+  justify-content: space-evenly;
+}
+
+// OTHERS
+.logoSVG{
+  filter: invert(100%) brightness(200%);
+}
+h1{
+  font-family: 'NeueHaasUnicaProBold';
+  cursor: pointer;
+  color: $navy-blue-90;
+}
+h1:hover{
+  text-decoration: underline;
+}
+
+.breadcrumbContainer{;
+  color:$white;
+}
+
+
+
