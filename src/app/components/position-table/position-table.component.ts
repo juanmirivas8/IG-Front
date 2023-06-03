@@ -7,6 +7,7 @@ import {SelectionModel} from "@angular/cdk/collections";
 import {PositionService} from "../../services/position.service";
 import {Router} from "@angular/router";
 
+
 @Component({
   selector: 'app-position-table',
   templateUrl: './position-table.component.html',
@@ -67,7 +68,6 @@ export class PositionTableComponent implements OnInit,AfterViewInit {
   addPosition(){
 
   }
-
   isColumnVisible(column: string): boolean {
     return this.displayedColumns.includes(column);
   }

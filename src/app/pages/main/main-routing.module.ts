@@ -9,8 +9,9 @@ import {CandidateInfoPageComponent} from "./candidate-info-page/candidate-info-p
 import {ApplicationInfoPageComponent} from "./application-info-page/application-info-page.component";
 import {AuthGuard} from "../../guards/auth.guard";
 
-const routes: Routes = [{ path: 'main',canActivateChild:[AuthGuard], component: MainComponent,data:{breadcrumb:'breadcrumb_main'}, children: [
-    { path: '', redirectTo: 'positions', pathMatch: 'full' },
+const routes: Routes = [{ path: 'main',/* canActivateChild:[AuthGuard], */ component: MainComponent,data:{breadcrumb:'breadcrumb_main'}, children: [
+    { path: '', redirectTo: 'newPosition', pathMatch: 'full' },
+    { path: 'newPosition', component: PositionInfoPageComponent,data:{breadcrumb:'breadcrumb_newPosition'}},
     { path: 'positions', component: PositionOverviewPageComponent,data:{breadcrumb:'breadcrumb_positions'}, children:[
         { path: 'newPosition', component: PositionInfoPageComponent,data:{breadcrumb:'breadcrumb_newPosition'}},
         { path: ':id', component: PositionInfoPageComponent,data:{breadcrumb:'breadcrumb_positionInfo'}},

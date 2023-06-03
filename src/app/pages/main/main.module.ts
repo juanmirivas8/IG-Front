@@ -27,8 +27,9 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {BreadcrumbModule} from "xng-breadcrumb";
 import {AppModule} from "../../app.module";
-
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,10 @@ import {AppModule} from "../../app.module";
     MatPaginatorModule,
     MatTooltipModule,
     BreadcrumbModule,
-    AppModule
+    AppModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule
   ]
 })
 export class MainModule { }
