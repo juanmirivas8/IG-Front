@@ -5,6 +5,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {Position} from "../../../models/Position";
 import {SelectionModel} from "@angular/cdk/collections";
 import {PositionService} from "../../services/position.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-position-table',
@@ -35,7 +36,7 @@ export class PositionTableComponent implements OnInit,AfterViewInit {
   "position_field_subrol",
   "position_field_project"
   ];
-  constructor(private positionService: PositionService) {
+  constructor(private positionService: PositionService,private router:Router) {
     this.dataSource = new MatTableDataSource<Position>(this.positionService.positions);
     this.availableColumns = Position.getKeys();
     this.availableColumns.unshift('select');
@@ -63,6 +64,10 @@ export class PositionTableComponent implements OnInit,AfterViewInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
+  addPosition(){
+
+  }
+
   isColumnVisible(column: string): boolean {
     return this.displayedColumns.includes(column);
   }
