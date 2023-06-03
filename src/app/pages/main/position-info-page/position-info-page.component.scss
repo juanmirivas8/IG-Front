@@ -1,0 +1,61 @@
+.titleForm {
+    display: flex;
+    padding: 1%;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(245, 245, 245, 255);
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin: 2%;
+    align-content: center;
+    -webkit-box-shadow: -4px 10px 12px -7px rgba(173, 173, 173, 1);
+    -moz-box-shadow: -4px 10px 12px -7px rgba(173, 173, 173, 1);
+    box-shadow: -4px 10px 12px -7px rgba(173, 173, 173, 1);
+
+}
+
+.primeraFila {
+    justify-content: space-around;
+    display: inline-flex !important;
+    position: relative;
+    right: 140px;
+    margin: 15px;
+}
+
+.segundaFila {
+    justify-content: space-around;
+    display: inline-flex !important;
+    position: relative;
+    right: 140px;
+    margin: 15px;
+}
+
+.terceraFila {
+    justify-content: space-around;
+    display: inline-flex !important;
+    /*     position: relative;
+    margin: 15px;
+    left: 7px; */
+
+}
+
+/* RESPONSIVE 760px */
+@media (max-width: 768px) {
+
+    .primeraFila,
+    .segundaFila,
+    .terceraFila {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: static;
+        margin: 10px;
+        right: 0;
+        left: 0;
+    }
+}

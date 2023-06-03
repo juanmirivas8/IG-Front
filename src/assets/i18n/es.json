@@ -48,5 +48,16 @@
   "position_field_area": "Area",
   "position_field_rol": "Rol",
   "position_field_subrol": "Subrol",
-  "position_field_project": "Proyecto"
+  "position_field_project": "Proyecto",
+
+  "position_info_save":"Guardar",
+  "position_info_edit":"Editar",
+  "position_info_formTitle":"Resumen de la posición",
+  "position_info_formProject":"Proyecto",
+  "position_info_formArea":"Area",
+  "position_info_formOpeningReason":"Razón de apertura",
+  "position_info_formLocation":"Localización",
+  "position_info_VacancyNumbers":"Número de vacantes",
+  "position_info_OpeningAndClosingDay":"Dia de apertura y cierre",
+  "position_info_State":"Estado"
 }
