@@ -38,6 +38,8 @@ import { MatSortModule } from "@angular/material/sort";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { CandidateTableComponent } from './components/candidate-table/candidate-table.component';
+import { ApplicationTableComponent } from './components/application-table/application-table.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     OverlaySpinnerComponent,
     BreadcrumbComponent,
     PositionTableComponent,
+    CandidateTableComponent,
+    ApplicationTableComponent,
   ],
   imports: [
     MainRoutingModule,
@@ -107,7 +111,9 @@ import { MatNativeDateModule } from '@angular/material/core';
   ],
   exports: [
     BreadcrumbComponent,
-    PositionTableComponent
+    PositionTableComponent,
+    CandidateTableComponent,
+    ApplicationTableComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,166 @@
+@import "colors";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  row-gap: 15px;
+  height: 100%;
+  max-height: 80vh;
+
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  background-color: $white;
+
+  h4 {
+    margin: 0;
+  }
+}
+
+.table {
+  background-color: $white;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+
+  mat-paginator {
+    margin-top: auto;
+  }
+
+  max-height: 90%;
+}
+
+
+.tableHeader {
+  display: flex;
+  align-items: center;
+
+  column-gap: 5px;
+
+  h4 {
+    margin: 0;
+  }
+
+  padding: 10px;
+}
+
+.spacer {
+  margin-left: auto;
+}
+
+.mat-table {
+  display: flex;
+  flex-direction: column;
+
+  max-height: 100%;
+
+  th {
+    text-align: center;
+  }
+
+  td {
+
+    text-align: left;
+  }
+
+  overflow: auto;
+}
+
+.mat-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 10px;
+
+  min-height: 48px;
+
+}
+
+.mat-header-row {
+  background-color: $grey;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-bottom: 1px solid $dark-grey;
+  column-gap: 10px;
+  min-height: 56px;
+}
+
+.mat-header-cell {
+  border-right: 1px solid $dark-grey;
+  border-bottom: none;
+
+  &:last-child {
+    border-right: none;
+  }
+}
+
+.mat-sort-header-container {
+  justify-content: center !important;
+}
+
+.mat-cell {
+  border-bottom: none;
+  border-right: 1px solid $white;
+}
+
+.mat-column-select {
+  width: 50px !important;
+  padding: 0 !important;
+  display: flex;
+  justify-content: center;
+}
+
+.mat-column-technicalTestDate {
+  width: 5%;
+  flex-grow: 1;
+}
+
+.mat-column-interviewDate {
+  width: 5%;
+  flex-grow: 1;
+}
+
+.mat-column-firstContactDate {
+  width: 5%;
+  flex-grow: 1;
+}
+
+.mat-column-cvDate {
+  width: 5%;
+  flex-grow: 1;
+}
+
+.mat-column-description {
+  width: 35%;
+  flex-grow: 5;
+}
+
+.mat-column-contactMethod {
+  width: 5%;
+  flex-grow: 1;
+}
+
+.mat-column-status {
+  width: 5%;
+  flex-grow: 1;
+}
+
+.mat-column-surname {
+  width: 5%;
+  flex-grow: 1;
+}
+
+.mat-column-name {
+  width: 5%;
+  flex-grow: 1;
+}
+
+.mat-column-id {
+  width: 5%;
+  flex-grow: 1;
+}
