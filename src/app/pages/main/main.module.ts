@@ -64,7 +64,7 @@ import { MatSelectModule } from '@angular/material/select';
     AppModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
   ]
 })
 export class MainModule { }

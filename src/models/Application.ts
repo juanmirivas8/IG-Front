@@ -10,4 +10,8 @@ export class Application {
   status?:ApplicationStatus;
   rejectionReason?:string;
   description?:string;
+
+  public static getKeys(): string[]{
+    return ["id","candidate","position","status","rejectionReason","description"];
+  }
 }

@@ -59,5 +59,39 @@
   "position_info_formLocation":"Localización",
   "position_info_VacancyNumbers":"Número de vacantes",
   "position_info_OpeningAndClosingDay":"Dia de apertura y cierre",
-  "position_info_State":"Estado"
+  "position_info_State":"Estado",
+
+  "candidate_field_id": "Id",
+  "candidate_field_name": "Nombre",
+  "candidate_field_surname": "Apellido",
+  "candidate_field_description": "Descripción",
+  "candidate_field_status": "Estado",
+  "candidate_field_contactMethod": "Metodo de contacto",
+  "candidate_field_cvDate": "Currículum Vitae",
+  "candidate_field_interviewDate": "Fecha de la entrevista",
+  "candidate_field_technicalTestDate": "Fecha de prueba técnica",
+  "candidate_field_firstContactDate": "Primera fecha de contacto",
+
+  "candidate_table_openCandidate": "Candidatos Abiertos",
+  "candidate_table_closedCandidate": "Candidatos Cerrados",
+  "candidate_table_reset": "Reiniciar",
+  "candidate_table_addCandidate": "Añadir Candidatos",
+  "candidate_table_showHelpText": "Mostrar:",
+  "candidate_table_searchHint": "Buscar",
+  "candidate_table_searchByPrefix": "Buscar por",
+
+  "application_field_id": "Id",
+  "application_field_candidate": "Candidato",
+  "application_field_position": "Posición",
+  "application_field_status": "Estado",
+  "application_field_rejectionReason": "Motivo de Rechazo",
+  "application_field_description": "Descripción",
+
+  "application_table_openApplication": "Solicitudes Abiertas",
+  "application_table_closedApplication": "Solicitudes Cerradas",
+  "application_table_reset": "Reiniciar",
+  "application_table_addApplication": "Añadir Solicitud",
+  "application_table_showHelpText": "Mostrar:",
+  "application_table_searchHint": "Buscar",
+  "application_table_searchByPrefix": "Buscar por"
 }

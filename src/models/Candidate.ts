@@ -16,5 +16,8 @@ export class Candidate{
   public firstContactDate?: Date;
   public applications?: Application[];
 
+  public static getKeys(): string[]{
+    return ["id","name","surname","description","status","contactMethod","cvDate","interviewDate","technicalTestDate","firstContactDate"];
+  }
 
 }
