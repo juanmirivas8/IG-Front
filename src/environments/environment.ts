@@ -9,7 +9,7 @@ export const environment = {
     endpoints:{
       authRegister:'/Auth/Register',
       authLogin: '/Auth/Login',
-
+      lookUp: '/LookUp/GetAllLookUps'
     }
   }
 };
