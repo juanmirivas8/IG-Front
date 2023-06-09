@@ -20,10 +20,9 @@
     </button>
     <mat-menu #filter>
       <button (click)="toggleFilterSelection(column);$event.stopPropagation()" mat-menu-item
-        *ngFor="let column of availableColumns">
+        *ngFor="let column of filterColums">
         <mat-checkbox disabled [checked]="filterSelection.isSelected(column)"></mat-checkbox>
-
-        {{ column }}
+        {{ 'application_field_' + column | translate }}
       </button>
     </mat-menu>
   </div>
@@ -48,7 +47,7 @@
         <button mat-menu-item *ngFor="let column of availableColumns"
           (click)="toggleColumn(column);$event.stopPropagation()">
           <mat-checkbox disabled [checked]="isColumnVisible(column)"></mat-checkbox>
-          {{ column }}
+          {{ 'application_field_' + column | translate }}
         </button>
       </mat-menu>
     </div>

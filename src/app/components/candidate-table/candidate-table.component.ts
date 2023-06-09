@@ -17,6 +17,7 @@ export class CandidateTableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
   @Input() multipleSelection: boolean = true;
   availableColumns: string[] = [];
+  filterColums: string[] = [];
   @Input() displayedColumns: string[] = [];
   dataSource: MatTableDataSource<Candidate>;
   selection = new SelectionModel<Candidate>(true, [], true);
@@ -42,6 +43,7 @@ export class CandidateTableComponent implements OnInit, AfterViewInit {
     this.displayedColumns.unshift('select');
     this.filterSelection.toggle('id');
     this.filterNameHint = this.filterNameHintOptions[0];
+    this.filterColums=Candidate.getKeys();
   }
 
   ngOnInit(): void {
@@ -106,15 +108,15 @@ export class CandidateTableComponent implements OnInit, AfterViewInit {
       this.filterSelection.select(filter);
       switch (this.filterSelection.selected[0]) {
         case 'id': this.filterNameHint = this.filterNameHintOptions[0]; break;
-        case 'name': this.filterNameHint = this.filterNameHintOptions[11]; break;
+        case 'name': this.filterNameHint = this.filterNameHintOptions[1]; break;
         case 'surname': this.filterNameHint = this.filterNameHintOptions[2]; break;
-        case 'description': this.filterNameHint = this.filterNameHintOptions[1]; break;
-        case 'status': this.filterNameHint = this.filterNameHintOptions[6]; break;
-        case 'contactMethod': this.filterNameHint = this.filterNameHintOptions[3]; break;
-        case 'cvDate': this.filterNameHint = this.filterNameHintOptions[5]; break;
-        case 'interviewDate': this.filterNameHint = this.filterNameHintOptions[4]; break;
-        case 'technicalTestDate': this.filterNameHint = this.filterNameHintOptions[7]; break;
-        case 'firstContactDate': this.filterNameHint = this.filterNameHintOptions[8]; break;
+        case 'description': this.filterNameHint = this.filterNameHintOptions[3]; break;
+        case 'status': this.filterNameHint = this.filterNameHintOptions[4]; break;
+        case 'contactMethod': this.filterNameHint = this.filterNameHintOptions[5]; break;
+        case 'cvDate': this.filterNameHint = this.filterNameHintOptions[6]; break;
+        case 'interviewDate': this.filterNameHint = this.filterNameHintOptions[7]; break;
+        case 'technicalTestDate': this.filterNameHint = this.filterNameHintOptions[8]; break;
+        case 'firstContactDate': this.filterNameHint = this.filterNameHintOptions[9]; break;
       }
     }
   }

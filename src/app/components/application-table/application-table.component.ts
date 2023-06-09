@@ -18,6 +18,7 @@ export class ApplicationTableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
   @Input() multipleSelection: boolean = true;
   availableColumns: string[] = [];
+  filterColums: string[] = [];
   @Input() displayedColumns: string[] = [];
   dataSource: MatTableDataSource<Application>;
   selection = new SelectionModel<Application>(true, [], true);
@@ -39,6 +40,7 @@ export class ApplicationTableComponent implements OnInit, AfterViewInit {
     this.displayedColumns.unshift('select');
     this.filterSelection.toggle('id');
     this.filterNameHint = this.filterNameHintOptions[0];
+    this.filterColums=Application.getKeys();
   }
 
   ngOnInit(): void {
@@ -104,11 +106,11 @@ export class ApplicationTableComponent implements OnInit, AfterViewInit {
       this.filterSelection.select(filter);
       switch (this.filterSelection.selected[0]) {
         case 'id': this.filterNameHint = this.filterNameHintOptions[0]; break;
-        case 'candidate': this.filterNameHint = this.filterNameHintOptions[11]; break;
+        case 'candidate': this.filterNameHint = this.filterNameHintOptions[1]; break;
         case 'position': this.filterNameHint = this.filterNameHintOptions[2]; break;
-        case 'status': this.filterNameHint = this.filterNameHintOptions[1]; break;
-        case 'rejectionReason': this.filterNameHint = this.filterNameHintOptions[6]; break;
-        case 'description': this.filterNameHint = this.filterNameHintOptions[3]; break;
+        case 'status': this.filterNameHint = this.filterNameHintOptions[3]; break;
+        case 'rejectionReason': this.filterNameHint = this.filterNameHintOptions[4]; break;
+        case 'description': this.filterNameHint = this.filterNameHintOptions[5]; break;
       }
     }
   }
