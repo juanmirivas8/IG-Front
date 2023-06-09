@@ -1,61 +1,98 @@
-.titleForm {
-    display: flex;
-    padding: 1%;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid rgba(245, 245, 245, 255);
+@import "colors";
+.container{
+  display:grid;
+  grid-auto-rows: auto 1fr 1fr;
+  height: 100%;
+  row-gap: 20px;
 }
 
-.formulario {
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    margin: 2%;
-    align-content: center;
-    -webkit-box-shadow: -4px 10px 12px -7px rgba(173, 173, 173, 1);
-    -moz-box-shadow: -4px 10px 12px -7px rgba(173, 173, 173, 1);
-    box-shadow: -4px 10px 12px -7px rgba(173, 173, 173, 1);
-
+.data-container-select{
+  display:flex;
+  flex-direction: column;
+  width: 20%;
+  padding: 10px;
+  p{
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+  }
 }
 
-.primeraFila {
-    justify-content: space-around;
-    display: inline-flex !important;
-    position: relative;
-    right: 140px;
-    margin: 15px;
+.data-container-integer{
+  display:flex;
+  flex-direction: column;
+  width: 10%;
+  padding: 10px;
+  p{
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+  }
+}
+.data-container-dates{
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 10px;
+  width: 30%;
+  > div{
+    display:flex;
+    width: 10%;
+  }
+  p{
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+  }
+}
+.data-container-description{
+  display:flex;
+  flex-direction: column;
+  width: 70%;
+  padding: 10px;
+  p{
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+  }
+
+}
+.data-container-body{
+  display: flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.data-container-header{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: black 1px solid;
+  background-color: $white;
+  div{
+    padding-left: 10px;
+    font-weight: bold;
+  }
+
+  button{
+    background-color: $navy-blue-80;
+    color: $white;
+    margin: 10px;
+  }
 }
 
-.segundaFila {
-    justify-content: space-around;
-    display: inline-flex !important;
-    position: relative;
-    right: 140px;
-    margin: 15px;
+.data-container{
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: $white;
 }
 
-.terceraFila {
-    justify-content: space-around;
-    display: inline-flex !important;
-    /*     position: relative;
-    margin: 15px;
-    left: 7px; */
-
+.table-container{
+  position: relative;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
-/* RESPONSIVE 760px */
-@media (max-width: 768px) {
-
-    .primeraFila,
-    .segundaFila,
-    .terceraFila {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        position: static;
-        margin: 10px;
-        right: 0;
-        left: 0;
-    }
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  background-color: $white !important; /* replace red with the color you want */
 }

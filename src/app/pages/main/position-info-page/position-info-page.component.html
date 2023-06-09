@@ -1,80 +1,132 @@
-<app-breadcrumb></app-breadcrumb>
-<!-- <h1>{{'position_info_save' | translate}}</h1> -->
-<div class="formulario">
-
-    <div class="titleForm">
-        <h2 style="font-weight: bold;">{{ 'position_info_formTitle' | translate }}</h2>
-        <button mat-raised-button color="primary" (click)="isEditing ? guardar() : startEditing()"
-            style="background-color: rgba(24,144,255,255)">
-            {{ isEditing ? ('position_info_save' | translate ) : ('position_info_edit' | translate ) }}
-        </button>
-    </div>
-
-    <div class="primeraFila">
-        <!-- class="example-full-width" appearance="fill" -->
-        <mat-form-field>
-            <mat-label>{{'position_info_formProject' | translate}}</mat-label>
-            <mat-select style="margin: 5px;" [disabled]="!isEditing">
-                <mat-option value="option">Hola</mat-option>
-                <mat-option value="option">Mundo</mat-option>
-                <mat-option value="option">Que tal</mat-option>
-            </mat-select>
-        </mat-form-field>
-
-        <mat-form-field>
-            <mat-label>{{'position_info_formArea' | translate}}</mat-label>
-            <mat-select style="margin: 5px;" [disabled]="!isEditing">
-                <mat-option value="option">Hola</mat-option>
-                <mat-option value="option">Mundo</mat-option>
-                <mat-option value="option">Que tal</mat-option>
-            </mat-select>
-        </mat-form-field>
+<div class="container">
+  <app-breadcrumb></app-breadcrumb>
+  <ng-container *ngIf="!isInserting && !isUpdating">
+    <div class="data-container">
 
     </div>
+  </ng-container>
 
-    <div class="segundaFila">
-        <!-- preguntar a juanmi donde se encuentra este campo en el modelo  -->
-        <mat-form-field>
-            <mat-label>{{'position_info_formOpeningReason' | translate}}</mat-label>
-            <input style="margin: 5px;" matInput placeholder=". . ." [disabled]="!isEditing">
-        </mat-form-field>
+  <ng-container *ngIf="isInserting || isUpdating">
+    <form class="data-container" [formGroup]="form">
+      <div class="data-container-header">
+        <div>{{"Resumen de la posición"|translate}}</div>
+        <button mat-raised-button class="signInButton" type="button">{{"Editar"|translate}}</button>
+      </div>
 
-        <mat-form-field>
-            <mat-label>{{'position_info_formLocation' | translate}}</mat-label>
-            <mat-select style="margin: 5px;" [disabled]="!isEditing">
-                <mat-option value="option">Hola</mat-option>
-                <mat-option value="option">Mundo</mat-option>
-                <mat-option value="option">Que tal</mat-option>
+      <div class="data-container-body">
+
+        <div class="data-container-select">
+          <p>{{"Proyecto"|translate}}</p>
+          <mat-form-field class="formField" appearance="outline">
+            <mat-select formControlName="project">
+              <mat-option *ngFor="let project of lookUpService.projects" [value]="project">
+                {{project.name|translate}}
+              </mat-option>
             </mat-select>
-        </mat-form-field>
+          </mat-form-field>
+        </div>
 
-    </div>
-
-    <div class="terceraFila">
-        <!-- preguntar a juanmi sobre como quiere que se controle el campo numerico  -->
-        <mat-form-field>
-            <mat-label>{{'position_info_VacancyNumbers' | translate}}</mat-label>
-            <input style="margin: 5px;" matInput placeholder=". . ." [disabled]="!isEditing" inputmode="numeric"
-                pattern="[0-9]*">
-        </mat-form-field>
-
-        <mat-form-field>
-            <mat-label>{{ 'position_info_OpeningAndClosingDay' | translate }}</mat-label>
-            <input matInput style="margin: 5px;" [matDatepicker]="picker" [disabled]="!isEditing">
-            <mat-datepicker-toggle matSuffix [for]="picker" style="font-size: 24px;"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-
-
-        <mat-form-field>
-            <mat-label>{{'position_info_State' | translate}}</mat-label>
-            <mat-select style="margin: 5px;" [disabled]="!isEditing">
-                <mat-option value="option">Hola</mat-option>
-                <mat-option value="option">Mundo</mat-option>
-                <mat-option value="option">Que tal</mat-option>
+        <div class="data-container-select">
+          <p>{{"Area"|translate}}</p>
+          <mat-form-field class="formField" appearance="outline">
+            <mat-select formControlName="area">
+              <mat-option *ngFor="let area of lookUpService.areas" [value]="area">
+                {{area.name|translate}}
+              </mat-option>
             </mat-select>
-        </mat-form-field>
+          </mat-form-field>
+        </div>
 
+        <div class="data-container-select">
+          <p>{{"Rol"|translate}}</p>
+          <mat-form-field class="formField" appearance="outline">
+            <mat-select formControlName="rol">
+              <mat-option *ngFor="let rol of lookUpService.roles" [value]="rol">
+                {{rol.name|translate}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="data-container-select">
+          <p>{{"SubRol"|translate}}</p>
+          <mat-form-field class="formField" appearance="outline">
+            <mat-select formControlName="subRol">
+              <mat-option *ngFor="let subRol of lookUpService.subRoles" [value]="subRol">
+                {{subRol.name|translate}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="data-container-select">
+          <p>{{"Localization"|translate}}</p>
+          <mat-form-field class="formField" appearance="outline">
+            <mat-select formControlName="localization">
+              <mat-option *ngFor="let localization of lookUpService.localizations" [value]="localization">
+                {{localization.name|translate}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="data-container-select">
+          <p>{{"Estado"|translate}}</p>
+          <mat-form-field class="formField" appearance="outline">
+            <mat-select formControlName="status">
+              <mat-option *ngFor="let status of lookUpService.positionStatus" [value]="status">
+                {{status.name|translate}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="data-container-integer">
+          <p>{{"Vacantes"|translate}}</p>
+          <mat-form-field class="formField" appearance="outline">
+            <input matInput type="number" formControlName="vacancies">
+          </mat-form-field>
+        </div>
+
+        <div class="data-container-dates">
+          <p>{{"Dia de apertura y cierre"|translate}}</p>
+          <div>
+            <mat-form-field>
+              <input matInput [matDatepicker]="startDatePicker" formControlName="creationDate">
+              <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+              <mat-datepicker #startDatePicker></mat-datepicker>
+            </mat-form-field>
+            <mat-icon>arrow_forward</mat-icon>
+            <mat-form-field>
+              <input matInput [matDatepicker]="endDatePicker" formControlName="closingDate">
+              <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+              <mat-datepicker #endDatePicker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="data-container-description">
+          <p>{{"Descripcion"|translate}}</p>
+          <mat-form-field class="formField" appearance="outline">
+            <input matInput type="text" formControlName="description">
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </ng-container>
+
+  <ng-container *ngIf="isInserting">
+    <div class="table-container">
+      <app-overlay-spinner [show]="false"></app-overlay-spinner>
+      <app-candidate-table></app-candidate-table>
     </div>
+  </ng-container>
+
+  <ng-container *ngIf="!isInserting">
+    <div class="table-container">
+      <app-overlay-spinner [show]="false"></app-overlay-spinner>
+      <app-application-table></app-application-table>
+    </div>
+  </ng-container>
 
 </div>

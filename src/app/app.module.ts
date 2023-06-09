@@ -109,12 +109,13 @@ import { ApplicationTableComponent } from './components/application-table/applic
     },
     AuthGuard
   ],
-  exports: [
-    BreadcrumbComponent,
-    PositionTableComponent,
-    CandidateTableComponent,
-    ApplicationTableComponent
-  ],
+    exports: [
+        BreadcrumbComponent,
+        PositionTableComponent,
+        CandidateTableComponent,
+        ApplicationTableComponent,
+        OverlaySpinnerComponent
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
