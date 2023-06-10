@@ -10,7 +10,7 @@
     <form class="data-container" [formGroup]="form">
       <div class="data-container-header">
         <div>{{"Resumen de la posición"|translate}}</div>
-        <button mat-raised-button class="signInButton" type="button">{{"Editar"|translate}}</button>
+        <button mat-raised-button class="signInButton"   (click)="toggleEditMode()">{{ editMode ? 'Guardar' : "Editar" |translate }}</button>
       </div>
 
       <div class="data-container-body">

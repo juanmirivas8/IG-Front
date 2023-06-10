@@ -10,6 +10,7 @@ import {Position} from "../../../../models/Position";
   styleUrls: ['./position-info-page.component.scss']
 })
 export class PositionInfoPageComponent implements OnInit {
+  editMode = false;
   public isInserting: boolean = false;
   public isUpdating: boolean = true;
   public form: FormGroup;
@@ -31,5 +32,16 @@ export class PositionInfoPageComponent implements OnInit {
   ngOnInit(): void {
 
   }
+  toggleEditMode() {
+  this.editMode = !this.editMode;
+  
+  if (this.editMode) {
+    // Acciones cuando se activa el modo de edición (cambiar el texto del botón, etc.)
+    this.isInserting=true
+  } else {
+    // Acciones cuando se desactiva el modo de edición (cambiar el texto del botón, etc.)
+    this.isUpdating=false
+  }
+}
 
 }
