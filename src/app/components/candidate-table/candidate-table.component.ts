@@ -20,7 +20,7 @@ export class CandidateTableComponent implements OnInit, AfterViewInit {
   filterColums: string[] = [];
   @Input() displayedColumns: string[] = [];
   dataSource: MatTableDataSource<Candidate>;
-  selection = new SelectionModel<Candidate>(true, [], true);
+  @Input() selection = new SelectionModel<Candidate>(true, [], true);
   filterSelection = new SelectionModel<string>(true, [], true);
   filterNameHint: string = "";
   filterNameHintOptions: string[] = [
