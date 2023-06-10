@@ -2,23 +2,80 @@
   <app-breadcrumb></app-breadcrumb>
   <ng-container *ngIf="!isInserting && !isUpdating">
     <div class="data-container">
+      <div class="data-container-header">
+        <div>{{"position_info_formTitle"|translate}}</div>
+        <button (click)="editAction()" mat-raised-button class="signInButton" type="button">{{"position_info_edit"|translate}}</button>
+      </div>
 
-    </div>
+      <div class="data-container-body">
+
+          <div class="data-container-select">
+            <p>{{"position_field_project"|translate}}</p>
+            <p>{{this.lookUpService.getNameById(position.project,"project")}}</p>
+          </div>
+
+          <div class="data-container-select">
+            <p>{{"position_field_area"|translate}}</p>
+            <p>{{this.lookUpService.getNameById(position.area,"area")}}</p>
+          </div>
+
+          <div class="data-container-select">
+            <p>{{"position_field_rol"|translate}}</p>
+            <p>{{this.lookUpService.getNameById(position.rol,"rol")}}</p>
+          </div>
+
+          <div class="data-container-select">
+            <p>{{"position_field_subrol"|translate}}</p>
+            <p>{{this.lookUpService.getNameById(position.subRol,"subrol")}}</p>
+          </div>
+
+          <div class="data-container-select">
+            <p>{{"position_field_localization"|translate}}</p>
+            <p>{{this.lookUpService.getNameById(position.localization,"localization")}}</p>
+          </div>
+
+          <div class="data-container-select">
+            <p>{{"position_field_status"|translate}}</p>
+            <p>{{this.lookUpService.getNameById(position.status,"positionStatus")}}</p>
+          </div>
+
+          <div class="data-container-integer">
+            <p>{{"position_field_vacancies"|translate}}</p>
+            <p>{{position.vacancies}}</p>
+          </div>
+
+          <div class="data-container-dates">
+            <p>{{"position_field_creationDate"|translate}} - {{"position_field_closingDate"|translate}}</p>
+            <div>
+              <p>{{position.creationDate|date:'dd/MM/yyyy'}}</p>
+              <mat-icon>arrow_forward</mat-icon>
+              <p>{{position.closingDate|date:'dd/MM/yyyy'}}</p>
+            </div>
+          </div>
+
+          <div class="data-container-description">
+            <p>{{"position_field_description"|translate}}</p>
+            <p>{{position.description}}</p>
+          </div>
+        </div>
+      </div>
   </ng-container>
 
   <ng-container *ngIf="isInserting || isUpdating">
     <form class="data-container" [formGroup]="form">
       <div class="data-container-header">
-        <div>{{"Resumen de la posición"|translate}}</div>
-        <button mat-raised-button class="signInButton"   (click)="toggleEditMode()">{{ editMode ? 'Guardar' : "Editar" |translate }}</button>
+
+        <div>{{"position_info_formTitle"|translate}}</div>
+        <button (click)="insertAction()" mat-raised-button class="signInButton" type="button">{{"position_info_save"|translate}}</button>
+
       </div>
 
       <div class="data-container-body">
 
         <div class="data-container-select">
-          <p>{{"Proyecto"|translate}}</p>
+          <p>{{"position_field_project"|translate}}</p>
           <mat-form-field class="formField" appearance="outline">
-            <mat-select formControlName="project">
+            <mat-select formControlName="project" [compareWith]="compareId">
               <mat-option *ngFor="let project of lookUpService.projects" [value]="project">
                 {{project.name|translate}}
               </mat-option>
@@ -27,9 +84,9 @@
         </div>
 
         <div class="data-container-select">
-          <p>{{"Area"|translate}}</p>
+          <p>{{"position_field_area"|translate}}</p>
           <mat-form-field class="formField" appearance="outline">
-            <mat-select formControlName="area">
+            <mat-select formControlName="area" [compareWith]="compareId">
               <mat-option *ngFor="let area of lookUpService.areas" [value]="area">
                 {{area.name|translate}}
               </mat-option>
@@ -38,9 +95,9 @@
         </div>
 
         <div class="data-container-select">
-          <p>{{"Rol"|translate}}</p>
+          <p>{{"position_field_rol"|translate}}</p>
           <mat-form-field class="formField" appearance="outline">
-            <mat-select formControlName="rol">
+            <mat-select formControlName="rol" [compareWith]="compareId">
               <mat-option *ngFor="let rol of lookUpService.roles" [value]="rol">
                 {{rol.name|translate}}
               </mat-option>
@@ -49,9 +106,9 @@
         </div>
 
         <div class="data-container-select">
-          <p>{{"SubRol"|translate}}</p>
+          <p>{{"position_field_subrol"|translate}}</p>
           <mat-form-field class="formField" appearance="outline">
-            <mat-select formControlName="subRol">
+            <mat-select formControlName="subRol" [compareWith]="compareId">
               <mat-option *ngFor="let subRol of lookUpService.subRoles" [value]="subRol">
                 {{subRol.name|translate}}
               </mat-option>
@@ -60,9 +117,9 @@
         </div>
 
         <div class="data-container-select">
-          <p>{{"Localization"|translate}}</p>
+          <p>{{"position_field_localization"|translate}}</p>
           <mat-form-field class="formField" appearance="outline">
-            <mat-select formControlName="localization">
+            <mat-select formControlName="localization" [compareWith]="compareId">
               <mat-option *ngFor="let localization of lookUpService.localizations" [value]="localization">
                 {{localization.name|translate}}
               </mat-option>
@@ -71,9 +128,9 @@
         </div>
 
         <div class="data-container-select">
-          <p>{{"Estado"|translate}}</p>
+          <p>{{"position_field_status"|translate}}</p>
           <mat-form-field class="formField" appearance="outline">
-            <mat-select formControlName="status">
+            <mat-select formControlName="status" [compareWith]="compareId">
               <mat-option *ngFor="let status of lookUpService.positionStatus" [value]="status">
                 {{status.name|translate}}
               </mat-option>
@@ -82,14 +139,14 @@
         </div>
 
         <div class="data-container-integer">
-          <p>{{"Vacantes"|translate}}</p>
+          <p>{{"position_field_vacancies"|translate}}</p>
           <mat-form-field class="formField" appearance="outline">
             <input matInput type="number" formControlName="vacancies">
           </mat-form-field>
         </div>
 
         <div class="data-container-dates">
-          <p>{{"Dia de apertura y cierre"|translate}}</p>
+          <p>{{"position_field_creationDate"|translate}} - {{"position_field_closingDate"|translate}}</p>
           <div>
             <mat-form-field>
               <input matInput [matDatepicker]="startDatePicker" formControlName="creationDate">
@@ -106,7 +163,7 @@
         </div>
 
         <div class="data-container-description">
-          <p>{{"Descripcion"|translate}}</p>
+          <p>{{"position_field_description"|translate}}</p>
           <mat-form-field class="formField" appearance="outline">
             <input matInput type="text" formControlName="description">
           </mat-form-field>
@@ -118,14 +175,14 @@
   <ng-container *ngIf="isInserting">
     <div class="table-container">
       <app-overlay-spinner [show]="false"></app-overlay-spinner>
-      <app-candidate-table></app-candidate-table>
+      <app-candidate-table [selection]="candidateSelectionModel" [multipleSelection]="true"></app-candidate-table>
     </div>
   </ng-container>
 
   <ng-container *ngIf="!isInserting">
     <div class="table-container">
       <app-overlay-spinner [show]="false"></app-overlay-spinner>
-      <app-application-table></app-application-table>
+      <app-application-table [selection]="applicationSelectionModel" [multipleSelection]="true"></app-application-table>
     </div>
   </ng-container>
 

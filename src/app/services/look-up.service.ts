@@ -107,4 +107,41 @@ export class LookUpService {
         console.log(error);
       })
   }
+
+  public getNameById(object: any,type:string): string | undefined {
+    const arrays = [
+      this.applicationStatus,
+      this.areas,
+      this.candidateStatus,
+      this.contactMethods,
+      this.localizations,
+      this.positionStatus,
+      this.projects,
+      this.roles,
+      this.subRoles
+    ];
+
+    switch (type) {
+      case "applicationStatus":
+        return arrays[0].find(item => item.id ==object.id)?.name;
+      case "area":
+        return arrays[1].find(item => item.id ==object.id)?.name;
+      case "candidateStatus":
+        return arrays[2].find(item => item.id ==object.id)?.name;
+      case "contactMethod":
+        return arrays[3].find(item => item.id ==object.id)?.name;
+      case "localization":
+        return arrays[4].find(item => item.id ==object.id)?.name;
+      case "positionStatus":
+        return arrays[5].find(item => item.id ==object.id)?.name;
+      case "project":
+        return arrays[6].find(item => item.id ==object.id)?.name;
+      case "rol":
+        return arrays[7].find(item => item.id ==object.id)?.name;
+      case "subrol":
+        return arrays[8].find(item => item.id ==object.id)?.name;
+    }
+
+    return undefined;
+  }
 }

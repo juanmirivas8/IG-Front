@@ -53,13 +53,6 @@
   "position_info_save":"Save",
   "position_info_edit":"Edit",
   "position_info_formTitle":"Position Summary",
-  "position_info_formProject":"Project",
-  "position_info_formArea":"Area",
-  "position_info_formOpeningReason":"Opening Reason",
-  "position_info_formLocation":"Location",
-  "position_info_VacancyNumbers":"Vacancy Numbers",
-  "position_info_OpeningAndClosingDay":"Opening and closing day",
-  "position_info_State":"State",
 
   "candidate_field_id": "Id",
   "candidate_field_name": "Name",

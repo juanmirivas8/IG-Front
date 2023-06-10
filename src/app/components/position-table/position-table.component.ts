@@ -21,7 +21,7 @@ export class PositionTableComponent implements OnInit, AfterViewInit {
   filterColums: string[] = [];
   @Input() displayedColumns: string[] = [];
   dataSource: MatTableDataSource<Position>;
-  selection = new SelectionModel<Position>(true, [], true);
+  @Input() selection = new SelectionModel<Position>(true, [], true);
   filterSelection = new SelectionModel<string>(true, [], true);
   filterNameHint: string = "";
   filterNameHintOptions: string[] = [

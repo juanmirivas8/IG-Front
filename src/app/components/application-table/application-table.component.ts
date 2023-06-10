@@ -21,7 +21,7 @@ export class ApplicationTableComponent implements OnInit, AfterViewInit {
   filterColums: string[] = [];
   @Input() displayedColumns: string[] = [];
   dataSource: MatTableDataSource<Application>;
-  selection = new SelectionModel<Application>(true, [], true);
+  @Input() selection = new SelectionModel<Application>(true, [], true);
   filterSelection = new SelectionModel<string>(true, [], true);
   filterNameHint: string = "";
   filterNameHintOptions: string[] = [
