@@ -16,6 +16,11 @@
     margin: 0;
     padding: 0;
   }
+  p:last-child{
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .data-container-integer{
@@ -25,6 +30,11 @@
   padding: 10px;
   p{
     font-weight: bold;
+    margin: 0;
+    padding: 0;
+  }
+  p:last-child{
+    font-weight: normal;
     margin: 0;
     padding: 0;
   }
@@ -38,8 +48,13 @@
   > div{
     display:flex;
     width: 10%;
+    p{
+      font-weight: normal;
+      margin: 0;
+      padding: 0;
+    }
   }
-  p{
+  p:first-child{
     font-weight: bold;
     margin: 0;
     padding: 0;
@@ -52,6 +67,11 @@
   padding: 10px;
   p{
     font-weight: bold;
+    margin: 0;
+    padding: 0;
+  }
+  p:last-child{
+    font-weight: normal;
     margin: 0;
     padding: 0;
   }
