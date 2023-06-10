@@ -21,7 +21,6 @@ export class PositionInfoPageComponent implements OnInit {
   public isInserting: boolean = false;
   public isUpdating: boolean = true;
 
-  public example = "Example";
   public form: FormGroup = new FormGroup({});
   public position: Position = {
     id: 1,
@@ -87,9 +86,6 @@ export class PositionInfoPageComponent implements OnInit {
     }
     console.log(this.position);
 
-    this.isInserting = false;
-    this.isUpdating = false;
-
     if(this.isUpdating){
       this.isUpdating = false;
       this.isInserting = false;
@@ -100,17 +96,6 @@ export class PositionInfoPageComponent implements OnInit {
     }
 
   }
-  toggleEditMode() {
-  this.editMode = !this.editMode;
-  
-  if (this.editMode) {
-    // Acciones cuando se activa el modo de edición (cambiar el texto del botón, etc.)
-    this.isInserting=true
-  } else {
-    // Acciones cuando se desactiva el modo de edición (cambiar el texto del botón, etc.)
-    this.isUpdating=false
-  }
-}
 
   compareId(c1: any, c2:any): boolean {
     return c1 && c2 ? c1.id === c2.id : c1 === c2;

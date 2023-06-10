@@ -8,7 +8,7 @@ import {Position} from "../../../../models/Position";
   styleUrls: ['./candidate-info-page.component.scss']
 })
 export class CandidateInfoPageComponent implements OnInit {
-  editMode = false;
+
   public isInserting: boolean = false;
   public isUpdating: boolean = true;
   public form: FormGroup;
@@ -30,16 +30,5 @@ export class CandidateInfoPageComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  toggleEditMode() {
-  this.editMode = !this.editMode;
-  
-  if (this.editMode) {
-    // Acciones cuando se activa el modo de edición (cambiar el texto del botón, etc.)
-    this.isInserting=true
-  } else {
-    // Acciones cuando se desactiva el modo de edición (cambiar el texto del botón, etc.)
-    this.isUpdating=false
-  }
-}
 
 }
