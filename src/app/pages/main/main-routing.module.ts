@@ -10,7 +10,7 @@ import {ApplicationInfoPageComponent} from "./application-info-page/application-
 import {AuthGuard} from "../../guards/auth.guard";
 
 const routes: Routes = [{ path: 'main',/* canActivateChild:[AuthGuard], */ component: MainComponent,data:{breadcrumb:'breadcrumb_main'}, children: [
-    { path: '', redirectTo: 'positions/newPosition', pathMatch: 'full' },
+    { path: '', redirectTo: 'candidates/newCandidate', pathMatch: 'full' },
     { path: 'positions',data:{breadcrumb:'breadcrumb_positions'}, children:[
         {path: '', component: PositionOverviewPageComponent},
         { path: 'newPosition', component: PositionInfoPageComponent,data:{breadcrumb:'breadcrumb_newPosition'}},

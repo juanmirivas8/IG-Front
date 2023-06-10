@@ -14,8 +14,10 @@ import {Application} from "../../../../models/Application";
   styleUrls: ['./position-info-page.component.scss']
 })
 export class PositionInfoPageComponent implements OnInit {
+
   candidateSelectionModel = new SelectionModel<Candidate>(true, [], true);
   applicationSelectionModel = new SelectionModel<Application>(true, [], true);
+
   public isInserting: boolean = false;
   public isUpdating: boolean = true;
 
@@ -98,6 +100,17 @@ export class PositionInfoPageComponent implements OnInit {
     }
 
   }
+  toggleEditMode() {
+  this.editMode = !this.editMode;
+  
+  if (this.editMode) {
+    // Acciones cuando se activa el modo de edición (cambiar el texto del botón, etc.)
+    this.isInserting=true
+  } else {
+    // Acciones cuando se desactiva el modo de edición (cambiar el texto del botón, etc.)
+    this.isUpdating=false
+  }
+}
 
   compareId(c1: any, c2:any): boolean {
     return c1 && c2 ? c1.id === c2.id : c1 === c2;

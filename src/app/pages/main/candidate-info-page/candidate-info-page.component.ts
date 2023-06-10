@@ -1,15 +1,45 @@
 import { Component, OnInit } from '@angular/core';
-
+import {LookUpService} from "../../../services/look-up.service";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Position} from "../../../../models/Position";
 @Component({
   selector: 'app-candidate-info-page',
   templateUrl: './candidate-info-page.component.html',
   styleUrls: ['./candidate-info-page.component.scss']
 })
 export class CandidateInfoPageComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+  editMode = false;
+  public isInserting: boolean = false;
+  public isUpdating: boolean = true;
+  public form: FormGroup;
+  public position: Position = new Position();
+  constructor(public lookUpService: LookUpService,private fb:FormBuilder) {
+    this.form = this.fb.group({
+      area: new FormControl('',[Validators.required]),
+      project: new FormControl('',[Validators.required]),
+      rol: new FormControl('',[Validators.required]),
+      subRol: new FormControl('',[Validators.required]),
+      localization: new FormControl('',[Validators.required]),
+      status: new FormControl('',[Validators.required]),
+      description: new FormControl('',[Validators.required]),
+      vacancies: new FormControl('',[Validators.required]),
+      creationDate: new FormControl('',[Validators.required]),
+      closingDate: new FormControl('')
+    });
   }
+  ngOnInit(): void {
+
+  }
+  toggleEditMode() {
+  this.editMode = !this.editMode;
+  
+  if (this.editMode) {
+    // Acciones cuando se activa el modo de edición (cambiar el texto del botón, etc.)
+    this.isInserting=true
+  } else {
+    // Acciones cuando se desactiva el modo de edición (cambiar el texto del botón, etc.)
+    this.isUpdating=false
+  }
+}
 
 }

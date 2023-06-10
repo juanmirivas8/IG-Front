@@ -64,8 +64,10 @@
   <ng-container *ngIf="isInserting || isUpdating">
     <form class="data-container" [formGroup]="form">
       <div class="data-container-header">
+
         <div>{{"position_info_formTitle"|translate}}</div>
         <button (click)="insertAction()" mat-raised-button class="signInButton" type="button">{{"position_info_save"|translate}}</button>
+
       </div>
 
       <div class="data-container-body">
