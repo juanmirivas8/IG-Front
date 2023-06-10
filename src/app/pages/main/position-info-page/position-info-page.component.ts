@@ -35,13 +35,15 @@ export class PositionInfoPageComponent implements OnInit {
     closingDate: new Date(),
     lastUpdate: new Date(),
   };
-  constructor(public lookUpService: LookUpService,private fb:FormBuilder,private route:ActivatedRoute) {
-      var id = this.route.snapshot.paramMap.get('id');
+  constructor(public lookUpService: LookUpService,private fb:FormBuilder,private actRoute:ActivatedRoute,
+              private router:Router){
+      var id = this.actRoute.snapshot.paramMap.get('id');
+      console.log(id);
       if(id == null||undefined){
         this.isUpdating = false;
         this.isInserting = true;
       }else{
-        this.isUpdating = true;
+        this.isUpdating = false;
         this.isInserting = false;
         //call service to get position by id
       }
@@ -82,6 +84,19 @@ export class PositionInfoPageComponent implements OnInit {
       applications: this.applicationSelectionModel.selected
     }
     console.log(this.position);
+
+    this.isInserting = false;
+    this.isUpdating = false;
+
+    if(this.isUpdating){
+      this.isUpdating = false;
+      this.isInserting = false;
+    }else{
+      this.isUpdating = false;
+      this.isInserting = false;
+      this.router.navigate(['/main/positions/23']);
+    }
+
   }
 
   compareId(c1: any, c2:any): boolean {

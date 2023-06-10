@@ -3,8 +3,8 @@
   <ng-container *ngIf="!isInserting && !isUpdating">
     <div class="data-container">
       <div class="data-container-header">
-        <div>{{"Resumen de la posición"|translate}}</div>
-        <button (click)="editAction()" mat-raised-button class="signInButton" type="button">{{"Editar"|translate}}</button>
+        <div>{{"position_info_formTitle"|translate}}</div>
+        <button (click)="editAction()" mat-raised-button class="signInButton" type="button">{{"position_info_edit"|translate}}</button>
       </div>
 
       <div class="data-container-body">
@@ -64,8 +64,8 @@
   <ng-container *ngIf="isInserting || isUpdating">
     <form class="data-container" [formGroup]="form">
       <div class="data-container-header">
-        <div>{{"Resumen de la posición"|translate}}</div>
-        <button (click)="insertAction()" mat-raised-button class="signInButton" type="button">{{"Guardar"|translate}}</button>
+        <div>{{"position_info_formTitle"|translate}}</div>
+        <button (click)="insertAction()" mat-raised-button class="signInButton" type="button">{{"position_info_save"|translate}}</button>
       </div>
 
       <div class="data-container-body">
