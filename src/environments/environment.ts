@@ -7,6 +7,24 @@ export const environment = {
   api:{
     baseUrl:'http://localhost:5092',
     endpoints:{
+      candidate:{
+        getAllCandidates:'/Candidate/GetAll',
+        create:'/Candidate/Create',
+        update:'/Candidate/Update',
+        delete:'/Candidate/Delete/',
+      },
+      application:{
+        getAllApplications:'/Application/GetAll',
+        create:'/Application/Create',
+        update:'/Application/Update',
+        delete:'/Application/Delete/',
+      },
+      position:{
+        getAllPositions:'/Position/GetAll',
+        create:'/Position/Create',
+        update:'/Position/Update',
+        delete:'/Position/Delete/',
+      },
       authRegister:'/Auth/Register',
       authLogin: '/Auth/Login',
       lookUp: '/LookUp/GetAllLookUps'
