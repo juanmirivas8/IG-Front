@@ -68,7 +68,7 @@ export class PositionTableComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
   addPosition() {
-
+    this.router.navigate(['/main/positions/newPosition']);
   }
   isColumnVisible(column: string): boolean {
     return this.displayedColumns.includes(column);
@@ -155,5 +155,10 @@ export class PositionTableComponent implements OnInit, AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  navigateToPosition(row:Position) {
+    console.log(row);
+    this.router.navigate([`/main/positions/${row.id}`]);
   }
 }

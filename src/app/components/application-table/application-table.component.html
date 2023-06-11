@@ -36,7 +36,7 @@
 
       <div class="spacer"></div>
 
-      <button mat-raised-button color="primary" (click)="addPosition()">+
+      <button mat-raised-button color="primary" (click)="addApplication()">+
         {{"application_table_addApplication"|translate}}</button>
       <button mat-icon-button><mat-icon>refresh</mat-icon></button>
       <button mat-icon-button [matMenuTriggerFor]="fieldsVisibility">
@@ -108,7 +108,7 @@
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
 
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      <tr mat-row (click)="navigateToApplication(row)" *matRowDef="let row; columns: displayedColumns"></tr>
     </mat-table>
     <mat-paginator [pageSizeOptions]="[5,10,25,100]"></mat-paginator>
   </div>

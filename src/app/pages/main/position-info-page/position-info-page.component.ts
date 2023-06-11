@@ -44,15 +44,16 @@ export class PositionInfoPageComponent implements OnInit {
         this.isInserting = false;
         firstValueFrom(this.positionService.getById(Number.parseInt(id))).then((response)=>{
           this.position = response.data;
+          if(this.position.applications!=null){
+            this.applications.data = this.position.applications;
+          }
         })
       }
       firstValueFrom(this.candidateService.getAll()).then((response)=>{
         this.candidates.data = response.data;
       });
 
-      firstValueFrom(this.applicationService.getAll()).then((response)=>{
-        this.applications.data = response.data;
-      });
+
 
   }
   ngOnInit(): void {
@@ -112,6 +113,9 @@ export class PositionInfoPageComponent implements OnInit {
         .then((response) => {
           console.log(response);
           this.position = response.data;
+          if(this.position.applications!=null){
+            this.applications.data = this.position.applications;
+          }
         })
         .catch((error)=>{
           console.log(error);

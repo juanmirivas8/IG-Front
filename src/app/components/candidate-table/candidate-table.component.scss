@@ -78,6 +78,10 @@
 
   min-height: 48px;
 
+  &:hover{
+    background-color: #f5f5f5; /* Highlight color when hovering over a row */
+    cursor: pointer;
+  }
 }
 
 .mat-header-row {
