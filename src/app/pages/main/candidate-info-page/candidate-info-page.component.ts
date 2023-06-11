@@ -10,17 +10,18 @@ import { ApplicationService } from "../../../services/application.service";
 import { PositionService } from "../../../services/position.service";
 import { firstValueFrom } from "rxjs";
 import { MatTableDataSource } from '@angular/material/table';
+import {Position} from "../../../../models/Position";
 @Component({
   selector: 'app-candidate-info-page',
   templateUrl: './candidate-info-page.component.html',
   styleUrls: ['./candidate-info-page.component.scss']
 })
 export class CandidateInfoPageComponent implements OnInit {
-  candidateSelectionModel = new SelectionModel<Candidate>(true, [], true);
+  positionSelectionModel = new SelectionModel<Position>(true, [], true);
   applicationSelectionModel = new SelectionModel<Application>(true, [], true);
 
   applications: MatTableDataSource<Application> = new MatTableDataSource<Application>();
-  candidates: MatTableDataSource<Candidate> = new MatTableDataSource<Candidate>();
+  positions: MatTableDataSource<Position> = new MatTableDataSource<Position>();
 
   public isInserting: boolean = false;
   public isUpdating: boolean = true;
@@ -28,26 +29,31 @@ export class CandidateInfoPageComponent implements OnInit {
   public form: FormGroup = new FormGroup({});
   public candidate: Candidate = {};
   constructor(public lookUpService: LookUpService, private fb: FormBuilder, private actRoute: ActivatedRoute,
-    private router: Router, private Service: PositionService, private candidateService: CandidateService,
+    private router: Router, private positionService: PositionService, private candidateService: CandidateService,
     private applicationService: ApplicationService) {
-    var id = this.actRoute.snapshot.paramMap.get('id');
-    console.log(id);
-    if (id == null || undefined) {
-      this.isUpdating = false;
-      this.isInserting = true;
-    } else {
-      this.isUpdating = false;
-      this.isInserting = false;
-      firstValueFrom(this.candidateService.get(Number.parseInt(id))).then((response) => {
-        this.candidate = response.data;
-        if (this.candidate.applications != null) {
-          this.applications.data = this.candidate.applications;
-        }
-      })
-    }
-    firstValueFrom(this.candidateService.getAll()).then((response) => {
-      this.candidates.data = response.data;
+
+      var id = this.actRoute.snapshot.paramMap.get('id');
+      console.log(id);
+
+      if (id == null || undefined) {
+        this.isInserting = true;
+        this.isUpdating = true;
+      } else {
+        this.isUpdating = false;
+        this.isInserting = false;
+
+        firstValueFrom(this.candidateService.getById(Number.parseInt(id))).then((response) => {
+          this.candidate = response.data;
+          if (this.candidate.applications != null) {
+            this.applications.data = this.candidate.applications;
+          }
+        });
+      }
+
+    firstValueFrom(this.positionService.getAll()).then((response)=>{
+      this.positions.data = response.data;
     });
+
   }
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -62,10 +68,6 @@ export class CandidateInfoPageComponent implements OnInit {
       firstContactDate: new FormControl(this.candidate.firstContactDate, [Validators.required]),
     });
   }
-
-  /*   editAction() {
-      this.isUpdating = true;
-    } */
   editAction() {
     this.isUpdating = true;
 
@@ -76,13 +78,14 @@ export class CandidateInfoPageComponent implements OnInit {
       status: new FormControl(this.candidate.status, [Validators.required]),
       contactMethod: new FormControl(this.candidate.contactMethod, [Validators.required]),
       cvDate: new FormControl(this.candidate.cvDate, [Validators.required]),
-      interviewDate: new FormControl(this.candidate.description, [Validators.required]),
+      interviewDate: new FormControl(this.candidate.interviewDate, [Validators.required]),
       technicalTestDate: new FormControl(this.candidate.technicalTestDate, [Validators.required]),
       firstContactDate: new FormControl(this.candidate.firstContactDate, [Validators.required])
     });
   }
   insertAction() {
     this.candidate = {
+      id:this.candidate.id,
       name: this.form.get("name")?.value,
       surname: this.form.get("surname")?.value,
       description: this.form.get("description")?.value,
@@ -132,4 +135,7 @@ export class CandidateInfoPageComponent implements OnInit {
     return c1 && c2 ? c1.id === c2.id : c1 === c2;
   }
 
+  cancelAction() {
+    this.isUpdating = false;
+  }
 }
