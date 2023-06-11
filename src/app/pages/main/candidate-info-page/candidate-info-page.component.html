@@ -1,4 +1,170 @@
 <div class="container">
   <app-breadcrumb></app-breadcrumb>
+  <ng-container *ngIf="!isInserting && !isUpdating">
+    <div class="data-container">
+      <div class="data-container-header">
+        <div>{{"candidate_info_formTitle"|translate}}</div>
+        <button (click)="editAction()" mat-raised-button class="signInButton"
+          type="button">{{"candidate_info_edit"|translate}}</button>
+      </div>
+
+      <div class="data-container-body">
+
+        <div class="data-container-select">
+          <p>{{"candidate_field_name"|translate}}</p>
+          <p>{{this.lookUpService.getNameById(candidate.name,"name")}}</p>
+        </div>
+
+        <div class="data-container-select">
+          <p>{{"candidate_field_surname"|translate}}</p>
+          <p>{{this.lookUpService.getNameById(candidate.surname,"surname")}}</p>
+        </div>
+
+        <div class="data-container-select">
+          <p>{{"candidate_field_status"|translate}}</p>
+          <p>{{this.lookUpService.getNameById(candidate.status,"status")}}</p>
+        </div>
+
+        <div class="data-container-select">
+          <p>{{"candidate_field_contactMethod"|translate}}</p>
+          <p>{{this.lookUpService.getNameById(candidate.contactMethod,"contactMethod")}}</p>
+        </div>
+
+        <div class="data-container-dates">
+          <p>{{"candidate_field_cvDate"|translate}}</p>
+          <p>{{candidate.cvDate|date:'dd/MM/yyyy'}}</p>
+        </div>
+
+        <div class="data-container-dates">
+          <p>{{"candidate_field_interviewDate"|translate}}</p>
+          <p>{{candidate.interviewDate|date:'dd/MM/yyyy'}}</p>
+        </div>
+
+        <div class="data-container-dates">
+          <p>{{"candidate_field_technicalTestDate"|translate}}</p>
+          <p>{{candidate.technicalTestDate|date:'dd/MM/yyyy'}}</p>
+        </div>
+
+        <div class="data-container-dates">
+          <p>{{"candidate_field_firstContactDate"|translate}}</p>
+          <p>{{candidate.firstContactDate|date:'dd/MM/yyyy'}}</p>
+        </div>
+
+        <div class="data-container-select">
+          <p>{{"candidate_field_description"|translate}}</p>
+          <p>{{this.lookUpService.getNameById(candidate.description,"description")}}</p>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="isInserting || isUpdating">
+    <form class="data-container" [formGroup]="form">
+      <div class="data-container-header">
+
+        <div>{{"candidate_info_formTitle"|translate}}</div>
+        <button (click)="insertAction()" mat-raised-button class="signInButton"
+          type="button">{{"candidate_info_save"|translate}}</button>
+
+      </div>
+
+      <div class="data-container-body">
+
+        <div class="data-container-select">
+          <p>{{"candidate_field_name"|translate}}</p>
+          <mat-form-field class="formField" appearance="outline">
+            <input matInput type="text" formControlName="name">
+          </mat-form-field>
+        </div>
+
+        <div class="data-container-select">
+          <p>{{"candidate_field_surname"|translate}}</p>
+          <mat-form-field class="formField" appearance="outline">
+            <input matInput type="text" formControlName="surname">
+          </mat-form-field>
+        </div>
+
+        <div class="data-container-select">
+          <p>{{"candidate_field_status"|translate}}</p>
+          <mat-form-field class="formField" appearance="outline">
+            <mat-select formControlName="status" [compareWith]="compareId">
+              <mat-option *ngFor="let status of lookUpService.candidateStatus" [value]="status">
+                {{status.name|translate}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="data-container-select">
+          <p>{{"candidate_field_contactMethod"|translate}}</p>
+          <mat-form-field class="formField" appearance="outline">
+            <mat-select formControlName="contactMethod" [compareWith]="compareId">
+              <mat-option *ngFor="let contactMethod of lookUpService.contactMethods" [value]="contactMethod">
+                {{contactMethod.name|translate}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="data-container-dates">
+          <p>{{"candidate_field_cvDate"|translate}}</p>
+          <mat-form-field>
+            <input matInput [matDatepicker]="cvDate" formControlName="cvDate">
+            <mat-datepicker-toggle matSuffix [for]="cvDate"></mat-datepicker-toggle>
+            <mat-datepicker #cvDate></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="data-container-dates">
+          <p>{{"candidate_field_interviewDate"|translate}}</p>
+          <mat-form-field>
+            <input matInput [matDatepicker]="interviewDate" formControlName="interviewDate">
+            <mat-datepicker-toggle matSuffix [for]="interviewDate"></mat-datepicker-toggle>
+            <mat-datepicker #interviewDate></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="data-container-dates">
+          <p>{{"candidate_field_technicalTestDate"|translate}}</p>
+          <mat-form-field>
+            <input matInput [matDatepicker]="technicalTestDate" formControlName="technicalTestDate">
+            <mat-datepicker-toggle matSuffix [for]="technicalTestDate"></mat-datepicker-toggle>
+            <mat-datepicker #technicalTestDate></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="data-container-dates">
+          <p>{{"candidate_field_firstContactDate"|translate}}</p>
+          <mat-form-field>
+            <input matInput [matDatepicker]="firstContactDate" formControlName="firstContactDate">
+            <mat-datepicker-toggle matSuffix [for]="firstContactDate"></mat-datepicker-toggle>
+            <mat-datepicker #firstContactDate></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="data-container-description">
+          <p>{{"candidate_field_description"|translate}}</p>
+          <mat-form-field class="formField" appearance="outline">
+            <input matInput type="text" formControlName="description">
+          </mat-form-field>
+        </div>
+
+      </div>
+    </form>
+  </ng-container>
+
+  <ng-container *ngIf="isInserting">
+    <div class="table-container">
+      <app-overlay-spinner [show]="false"></app-overlay-spinner>
+      <app-candidate-table [selection]="candidateSelectionModel" [multipleSelection]="true"></app-candidate-table>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="!isInserting">
+    <div class="table-container">
+      <app-overlay-spinner [show]="false"></app-overlay-spinner>
+      <app-application-table [selection]="applicationSelectionModel" [multipleSelection]="true"></app-application-table>
+    </div>
+  </ng-container>
 
 </div>

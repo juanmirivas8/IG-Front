@@ -73,6 +73,10 @@
   "candidate_table_searchHint": "Search",
   "candidate_table_searchByPrefix": "Search by",
 
+  "candidate_info_save":"Save",
+  "candidate_info_edit":"Edit",
+  "candidate_info_formTitle":"Position Summary",
+
   "application_field_id": "Id",
   "application_field_candidate": "Candidate",
   "application_field_position": "Position",
