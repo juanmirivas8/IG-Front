@@ -112,7 +112,7 @@
 
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>{{"candidate_field_cvDate"|translate}}</th>
 
-                <td mat-cell *matCellDef="let row">{{row.cvDate.toLocaleDateString()}}</td>
+                <td mat-cell *matCellDef="let row">{{row.cvDate|date:'dd/MM/yyyy'}}</td>
             </ng-container>
 
             <ng-container matColumnDef="firstContactDate">
@@ -120,21 +120,21 @@
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>{{"candidate_field_firstContactDate"|translate}}
                 </th>
 
-                <td mat-cell *matCellDef="let row">{{row.firstContactDate.toLocaleDateString()}}</td>
+                <td mat-cell *matCellDef="let row">{{row.firstContactDate|date:'dd/MM/yyyy'}}</td>
             </ng-container>
 
             <ng-container matColumnDef="interviewDate">
 
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>{{"candidate_field_interviewDate"|translate}}</th>
 
-                <td mat-cell *matCellDef="let row">{{row.interviewDate.toLocaleDateString()}}</td>
+                <td mat-cell *matCellDef="let row">{{row.interviewDate|date:'dd/MM/yyyy'}}</td>
             </ng-container>
 
             <ng-container matColumnDef="technicalTestDate">
 
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>{{"candidate_field_technicalTestDate"|translate}}
                 </th>
-                <td mat-cell *matCellDef="let row">{{row.technicalTestDate.toLocaleDateString()}}</td>
+                <td mat-cell *matCellDef="let row">{{row.technicalTestDate|date:'dd/MM/yyyy'}}</td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
 

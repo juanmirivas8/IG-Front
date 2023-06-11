@@ -4,6 +4,7 @@
     <div class="data-container">
       <div class="data-container-header">
         <div>{{"candidate_info_formTitle"|translate}}</div>
+        <div style="margin-left: auto"></div>
         <button (click)="editAction()" mat-raised-button class="signInButton"
           type="button">{{"candidate_info_edit"|translate}}</button>
       </div>
@@ -12,22 +13,22 @@
 
         <div class="data-container-select">
           <p>{{"candidate_field_name"|translate}}</p>
-          <p>{{this.lookUpService.getNameById(candidate.name,"name")}}</p>
+          <p>{{this.candidate.name}}</p>
         </div>
 
         <div class="data-container-select">
           <p>{{"candidate_field_surname"|translate}}</p>
-          <p>{{this.lookUpService.getNameById(candidate.surname,"surname")}}</p>
+          <p>{{this.candidate.surname}}</p>
         </div>
 
         <div class="data-container-select">
           <p>{{"candidate_field_status"|translate}}</p>
-          <p>{{this.lookUpService.getNameById(candidate.status,"status")}}</p>
+          <p>{{this.candidate.status?.name}}</p>
         </div>
 
         <div class="data-container-select">
           <p>{{"candidate_field_contactMethod"|translate}}</p>
-          <p>{{this.lookUpService.getNameById(candidate.contactMethod,"contactMethod")}}</p>
+          <p>{{this.candidate.contactMethod?.name}}</p>
         </div>
 
         <div class="data-container-dates">
@@ -50,9 +51,9 @@
           <p>{{candidate.firstContactDate|date:'dd/MM/yyyy'}}</p>
         </div>
 
-        <div class="data-container-select">
+        <div class="data-container-description">
           <p>{{"candidate_field_description"|translate}}</p>
-          <p>{{this.lookUpService.getNameById(candidate.description,"description")}}</p>
+          <p>{{this.candidate.description}}</p>
         </div>
       </div>
     </div>
@@ -63,6 +64,8 @@
       <div class="data-container-header">
 
         <div>{{"candidate_info_formTitle"|translate}}</div>
+        <div style="margin-left: auto"></div>
+        <button (click)="cancelAction()" mat-raised-button class="cancelButton" type="button">{{"position_info_cancel"|translate}}</button>
         <button (click)="insertAction()" mat-raised-button class="signInButton"
           type="button">{{"candidate_info_save"|translate}}</button>
 
@@ -77,10 +80,10 @@
           </mat-form-field>
         </div>
 
-        <div class="data-container-select">
+        <div class="data-container-integer">
           <p>{{"candidate_field_surname"|translate}}</p>
           <mat-form-field class="formField" appearance="outline">
-            <input matInput type="text" formControlName="surname">
+            <input matInput type="text" formControlName="surname" maxlength="1">
           </mat-form-field>
         </div>
 
@@ -156,7 +159,7 @@
   <ng-container *ngIf="isInserting">
     <div class="table-container">
       <app-overlay-spinner [show]="false"></app-overlay-spinner>
-      <app-candidate-table [selection]="candidateSelectionModel" [multipleSelection]="true"></app-candidate-table>
+      <app-position-table [selection]="positionSelectionModel" [multipleSelection]="true"></app-position-table>
     </div>
   </ng-container>
 
