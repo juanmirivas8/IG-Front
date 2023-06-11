@@ -47,12 +47,14 @@
   "position_field_localization": "Localization",
   "position_field_area": "Area",
   "position_field_rol": "Rol",
-  "position_field_subrol": "Subrol",
+  "position_field_subRol": "Subrol",
   "position_field_project": "Project",
+  "position_field_select": "Select Column",
 
   "position_info_save":"Save",
   "position_info_edit":"Edit",
   "position_info_formTitle":"Position Summary",
+  "position_info_cancel":"Cancel",
 
   "candidate_field_id": "Id",
   "candidate_field_name": "Name",

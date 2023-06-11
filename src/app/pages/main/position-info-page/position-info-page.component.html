@@ -4,6 +4,7 @@
     <div class="data-container">
       <div class="data-container-header">
         <div>{{"position_info_formTitle"|translate}}</div>
+        <div style="margin-left: auto"></div>
         <button (click)="editAction()" mat-raised-button class="signInButton" type="button">{{"position_info_edit"|translate}}</button>
       </div>
 
@@ -25,7 +26,7 @@
           </div>
 
           <div class="data-container-select">
-            <p>{{"position_field_subrol"|translate}}</p>
+            <p>{{"position_field_subRol"|translate}}</p>
             <p>{{this.position.subRol?.name}}</p>
           </div>
 
@@ -66,6 +67,8 @@
       <div class="data-container-header">
 
         <div>{{"position_info_formTitle"|translate}}</div>
+        <div style="margin-left: auto"></div>
+        <button (click)="cancelAction()" mat-raised-button class="cancelButton" type="button">{{"position_info_cancel"|translate}}</button>
         <button (click)="insertAction()" mat-raised-button class="signInButton" type="button">{{"position_info_save"|translate}}</button>
 
       </div>
@@ -106,7 +109,7 @@
         </div>
 
         <div class="data-container-select">
-          <p>{{"position_field_subrol"|translate}}</p>
+          <p>{{"position_field_subRol"|translate}}</p>
           <mat-form-field class="formField" appearance="outline">
             <mat-select formControlName="subRol" [compareWith]="compareId">
               <mat-option *ngFor="let subRol of lookUpService.subRoles" [value]="subRol">

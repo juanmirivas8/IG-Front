@@ -85,7 +85,7 @@
 }
 .data-container-header{
   display:flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   border-bottom: black 1px solid;
   background-color: $white;
@@ -94,7 +94,7 @@
     font-weight: bold;
   }
 
-  button{
+  button:last-child{
     background-color: $navy-blue-80;
     color: $white;
     margin: 10px;
@@ -115,4 +115,8 @@
 
 .mat-form-field-appearance-outline .mat-form-field-outline {
   background-color: $white !important; /* replace red with the color you want */
+}
+.cancelButton{
+  background-color:firebrick;
+  color: $white;
 }
