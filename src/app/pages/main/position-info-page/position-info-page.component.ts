@@ -37,8 +37,8 @@ export class PositionInfoPageComponent implements OnInit {
       var id = this.actRoute.snapshot.paramMap.get('id');
       console.log(id);
       if(id == null||undefined){
-        this.isUpdating = false;
         this.isInserting = true;
+        this.isUpdating = true;
       }else{
         this.isUpdating = false;
         this.isInserting = false;
@@ -72,7 +72,6 @@ export class PositionInfoPageComponent implements OnInit {
   }
 
   editAction() {
-    this.isInserting = false;
     this.isUpdating = true;
 
     this.form = this.fb.group({
@@ -91,6 +90,7 @@ export class PositionInfoPageComponent implements OnInit {
 
   insertAction() {
     this.position = {
+      id: this.position.id,
       project: this.form.get("project")?.value,
       area: this.form.get("area")?.value,
       rol: this.form.get("rol")?.value,
@@ -105,10 +105,7 @@ export class PositionInfoPageComponent implements OnInit {
       applications: this.applicationSelectionModel.selected
     }
 
-    if(this.isUpdating){
-      this.isUpdating = false;
-      this.isInserting = false;
-
+    if(!this.isInserting){
       firstValueFrom(this.positionService.update(this.position))
         .then((response) => {
           console.log(response);
@@ -121,12 +118,9 @@ export class PositionInfoPageComponent implements OnInit {
           console.log(error);
         })
         .finally(()=>{
-
+          this.isUpdating = false;
         });
     }else{
-      this.isUpdating = false;
-      this.isInserting = false;
-
       firstValueFrom(this.positionService.create(this.position))
         .then((response) => {
           console.log(response);
@@ -139,7 +133,6 @@ export class PositionInfoPageComponent implements OnInit {
         .finally(()=>{
 
         });
-
     }
 
   }
