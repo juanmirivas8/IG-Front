@@ -12,8 +12,8 @@ import { Response } from 'src/models/Response';
 export class CandidateService {
 
   constructor(private http : HttpClient) { }
-  getAll(): Observable<Candidate[]> {
-    return this.http.get<Candidate[]>(`${environment.api.baseUrl}${environment.api.endpoints.candidate.getAllCandidates}`)
+  getAll(): Observable<Response<Candidate[]>> {
+    return this.http.get<Response<Candidate[]>>(`${environment.api.baseUrl}${environment.api.endpoints.candidate.getAllCandidates}`)
       .pipe(
         catchError(this.handleError)
       );
@@ -26,16 +26,24 @@ export class CandidateService {
       );
   }
 
-  delete(candidato: any): Observable<Response<Candidate>> {
-    const url = `${environment.api.baseUrl}${environment.api.endpoints.candidate.delete}${candidato.id}`;
+  get(id: number): Observable<Response<Candidate>> {
+    const url = `${environment.api.baseUrl}${environment.api.endpoints.candidate.get}${id}`;
+    return this.http.get<Response<Candidate>>(url)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  delete(candidate: Candidate): Observable<Response<Candidate>> {
+    const url = `${environment.api.baseUrl}${environment.api.endpoints.candidate.delete}${candidate.id}`;
     return this.http.delete<Response<Candidate>>(url)
       .pipe(
         catchError(this.handleError)
       );
   }
 
-  update(candidato: Candidate): Observable<Response<Candidate>> {
-    return this.http.put<Response<Candidate>>(`${environment.api.baseUrl}${environment.api.endpoints.candidate.update}`, candidato	)
+  update(candidate: Candidate): Observable<Response<Candidate>> {
+    return this.http.put<Response<Candidate>>(`${environment.api.baseUrl}${environment.api.endpoints.candidate.update}`, candidate	)
       .pipe(
         catchError(this.handleError)
       );

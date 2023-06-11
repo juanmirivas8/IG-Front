@@ -12,8 +12,16 @@ import { Response } from 'src/models/Response';
 export class ApplicationService {
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Application[]> {
-    return this.http.get<Application[]>(`${environment.api.baseUrl}${environment.api.endpoints.application.getAllApplications}`)
+  getAll(): Observable<Response<Application[]>> {
+    return this.http.get<Response<Application[]>>(`${environment.api.baseUrl}${environment.api.endpoints.application.getAllApplications}`)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  get(id: number): Observable<Response<Application>> {
+    const url = `${environment.api.baseUrl}${environment.api.endpoints.application.get}${id}`;
+    return this.http.get<Response<Application>>(url)
       .pipe(
         catchError(this.handleError)
       );
@@ -456,9 +464,9 @@ export class ApplicationService {
     status: { id: 1, name: "true" },
     rejectionReason: "Reason1",
     description: "descriptionn",
-  }, 
-  
-  
+  },
+
+
   {
     id: 1,
     candidate: {
@@ -594,10 +602,10 @@ export class ApplicationService {
     status: { id: 1, name: "true" },
     rejectionReason: "Reason1",
     description: "descriptionn",
-  }, 
-  
-  
-  
+  },
+
+
+
   {
     id: 1,
     candidate: {

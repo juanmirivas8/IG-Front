@@ -20,7 +20,7 @@ export class PositionTableComponent implements OnInit, AfterViewInit {
   availableColumns: string[] = [];
   filterColums: string[] = [];
   @Input() displayedColumns: string[] = [];
-  dataSource: MatTableDataSource<Position>;
+  @Input() dataSource: MatTableDataSource<Position>;
   @Input() selection = new SelectionModel<Position>(true, [], true);
   filterSelection = new SelectionModel<string>(true, [], true);
   filterNameHint: string = "";
@@ -39,7 +39,7 @@ export class PositionTableComponent implements OnInit, AfterViewInit {
     "position_field_subrol"
   ];
   constructor(private positionService: PositionService, private router: Router) {
-    this.dataSource = new MatTableDataSource<Position>(this.positionService.positions);
+    this.dataSource = new MatTableDataSource<Position>();
     this.availableColumns = Position.getKeys();
     this.availableColumns.unshift('select');
     this.displayedColumns = Position.getKeys();

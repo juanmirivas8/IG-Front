@@ -20,7 +20,7 @@ export class ApplicationTableComponent implements OnInit, AfterViewInit {
   availableColumns: string[] = [];
   filterColums: string[] = [];
   @Input() displayedColumns: string[] = [];
-  dataSource: MatTableDataSource<Application>;
+  @Input() dataSource: MatTableDataSource<Application>;
   @Input() selection = new SelectionModel<Application>(true, [], true);
   filterSelection = new SelectionModel<string>(true, [], true);
   filterNameHint: string = "";

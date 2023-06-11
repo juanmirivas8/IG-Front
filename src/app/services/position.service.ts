@@ -12,8 +12,8 @@ export class PositionService {
 
   constructor(private http : HttpClient) { }
 
-  getAll(): Observable<Position[]> {
-    return this.http.get<Position[]>(`${environment.api.baseUrl}${environment.api.endpoints.position.getAllPositions}`)
+  getAll(): Observable<Response<Position[]>> {
+    return this.http.get<Response<Position[]>>(`${environment.api.baseUrl}${environment.api.endpoints.position.getAllPositions}`)
       .pipe(
         catchError(this.handleError)
       );
@@ -26,7 +26,15 @@ export class PositionService {
       );
   }
 
-  delete(position: any): Observable<Response<Position>> {
+  getById(id: number): Observable<Response<Position>> {
+    const url = `${environment.api.baseUrl}${environment.api.endpoints.position.get}${id}`;
+    return this.http.get<Response<Position>>(url)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  delete(position: Position): Observable<Response<Position>> {
     const url = `${environment.api.baseUrl}${environment.api.endpoints.position.delete}${position.id}`;
     return this.http.delete<Response<Position>>(url)
       .pipe(

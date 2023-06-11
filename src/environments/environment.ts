@@ -12,18 +12,21 @@ export const environment = {
         create:'/Candidate/Create',
         update:'/Candidate/Update',
         delete:'/Candidate/Delete/',
+        get:'/Candidate/GetById/'
       },
       application:{
         getAllApplications:'/Application/GetAll',
         create:'/Application/Create',
         update:'/Application/Update',
         delete:'/Application/Delete/',
+        get:'/Application/GetById/'
       },
       position:{
         getAllPositions:'/Position/GetAll',
         create:'/Position/Create',
         update:'/Position/Update',
         delete:'/Position/Delete/',
+        get:'/Position/GetById/'
       },
       authRegister:'/Auth/Register',
       authLogin: '/Auth/Login',

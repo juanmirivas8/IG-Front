@@ -6,6 +6,11 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {SelectionModel} from "@angular/cdk/collections";
 import {Candidate} from "../../../../models/Candidate";
 import {Application} from "../../../../models/Application";
+import {PositionService} from "../../../services/position.service";
+import {firstValueFrom} from "rxjs";
+import {CandidateService} from "../../../services/candidate.service";
+import {ApplicationService} from "../../../services/application.service";
+import {MatTableDataSource} from "@angular/material/table";
 
 
 @Component({
@@ -15,6 +20,8 @@ import {Application} from "../../../../models/Application";
 })
 export class PositionInfoPageComponent implements OnInit {
 
+  applications: MatTableDataSource<Application> = new MatTableDataSource<Application>();
+  candidates: MatTableDataSource<Candidate> = new MatTableDataSource<Candidate>();
   candidateSelectionModel = new SelectionModel<Candidate>(true, [], true);
   applicationSelectionModel = new SelectionModel<Application>(true, [], true);
 
@@ -22,22 +29,11 @@ export class PositionInfoPageComponent implements OnInit {
   public isUpdating: boolean = true;
 
   public form: FormGroup = new FormGroup({});
-  public position: Position = {
-    id: 1,
-    project: { id: 1, name: "Project A" },
-    area: { id: 1, name: "Area 1" },
-    rol: { id: 1, name: "Role 1" },
-    subRol: { id: 1, name: "Sub Role 1" },
-    localization: { id: 1, name: "Localization 1" },
-    status: { id: 2, name: "Status 2" },
-    description: "Position description 1",
-    vacancies: 2,
-    creationDate: new Date(),
-    closingDate: new Date(),
-    lastUpdate: new Date(),
-  };
+  public position: Position = {};
   constructor(public lookUpService: LookUpService,private fb:FormBuilder,private actRoute:ActivatedRoute,
-              private router:Router){
+              private router:Router, private positionService: PositionService,private candidateService:CandidateService,
+              private applicationService:ApplicationService) {
+
       var id = this.actRoute.snapshot.paramMap.get('id');
       console.log(id);
       if(id == null||undefined){
@@ -46,8 +42,18 @@ export class PositionInfoPageComponent implements OnInit {
       }else{
         this.isUpdating = false;
         this.isInserting = false;
-        //call service to get position by id
+        firstValueFrom(this.positionService.getById(Number.parseInt(id))).then((response)=>{
+          this.position = response.data;
+        })
       }
+      firstValueFrom(this.candidateService.getAll()).then((response)=>{
+        this.candidates.data = response.data;
+      });
+
+      firstValueFrom(this.applicationService.getAll()).then((response)=>{
+        this.applications.data = response.data;
+      });
+
   }
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -67,6 +73,19 @@ export class PositionInfoPageComponent implements OnInit {
   editAction() {
     this.isInserting = false;
     this.isUpdating = true;
+
+    this.form = this.fb.group({
+      area: new FormControl(this.position.area,[Validators.required]),
+      project: new FormControl(this.position.project,[Validators.required]),
+      rol: new FormControl(this.position.rol,[Validators.required]),
+      subRol: new FormControl(this.position.subRol,[Validators.required]),
+      localization: new FormControl(this.position.localization,[Validators.required]),
+      status: new FormControl(this.position.status,[Validators.required]),
+      description: new FormControl(this.position.description,[Validators.required]),
+      vacancies: new FormControl(this.position.vacancies,[Validators.required]),
+      creationDate: new FormControl(this.position.creationDate,[Validators.required]),
+      closingDate: new FormControl(this.position.closingDate)
+    });
   }
 
   insertAction() {
@@ -84,15 +103,39 @@ export class PositionInfoPageComponent implements OnInit {
       lastUpdate: new Date(),
       applications: this.applicationSelectionModel.selected
     }
-    console.log(this.position);
 
     if(this.isUpdating){
       this.isUpdating = false;
       this.isInserting = false;
+
+      firstValueFrom(this.positionService.update(this.position))
+        .then((response) => {
+          console.log(response);
+          this.position = response.data;
+        })
+        .catch((error)=>{
+          console.log(error);
+        })
+        .finally(()=>{
+
+        });
     }else{
       this.isUpdating = false;
       this.isInserting = false;
-      this.router.navigate(['/main/positions/23']);
+
+      firstValueFrom(this.positionService.create(this.position))
+        .then((response) => {
+          console.log(response);
+          this.position = response.data;
+          this.router.navigate([`/main/positions/${response.data.id}`]);
+        })
+        .catch((error)=>{
+          console.log(error);
+        })
+        .finally(()=>{
+
+        });
+
     }
 
   }

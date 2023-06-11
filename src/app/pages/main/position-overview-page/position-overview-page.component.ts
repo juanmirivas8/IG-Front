@@ -1,24 +1,20 @@
 import {AfterViewInit, Component, OnDestroy, ViewChild} from '@angular/core';
-import {PositionTableComponent} from "../../../components/position-table/position-table.component";
+import {MatTableDataSource} from "@angular/material/table";
 import {Position} from "../../../../models/Position";
+import {firstValueFrom} from "rxjs";
+import {PositionService} from "../../../services/position.service";
 
 @Component({
   selector: 'app-position-overview-page',
   templateUrl: './position-overview-page.component.html',
   styleUrls: ['./position-overview-page.component.scss']
 })
-export class PositionOverviewPageComponent implements AfterViewInit,OnDestroy{
+export class PositionOverviewPageComponent {
 
-  private selectedPositions: Position[] = [];
-  @ViewChild(PositionTableComponent) positionTableComponent!: PositionTableComponent;
-  ngAfterViewInit(): void {
-    this.positionTableComponent.selection.changed.subscribe((change)=>{
-      this.selectedPositions = change.source.selected;
-      console.log(this.selectedPositions);
+  positions: MatTableDataSource<Position> = new MatTableDataSource<Position>();
+  constructor(private positionService: PositionService) {
+    firstValueFrom(this.positionService.getAll()).then((response)=>{
+      this.positions.data = response.data;
     });
-  }
-
-  ngOnDestroy(): void {
-    this.positionTableComponent.selection.changed.unsubscribe();
   }
 }

@@ -11,32 +11,32 @@
 
           <div class="data-container-select">
             <p>{{"position_field_project"|translate}}</p>
-            <p>{{this.lookUpService.getNameById(position.project,"project")}}</p>
+            <p>{{this.position.project?.name}}</p>
           </div>
 
           <div class="data-container-select">
             <p>{{"position_field_area"|translate}}</p>
-            <p>{{this.lookUpService.getNameById(position.area,"area")}}</p>
+            <p>{{this.position.area?.name}}</p>
           </div>
 
           <div class="data-container-select">
             <p>{{"position_field_rol"|translate}}</p>
-            <p>{{this.lookUpService.getNameById(position.rol,"rol")}}</p>
+            <p>{{this.position.rol?.name}}</p>
           </div>
 
           <div class="data-container-select">
             <p>{{"position_field_subrol"|translate}}</p>
-            <p>{{this.lookUpService.getNameById(position.subRol,"subrol")}}</p>
+            <p>{{this.position.subRol?.name}}</p>
           </div>
 
           <div class="data-container-select">
             <p>{{"position_field_localization"|translate}}</p>
-            <p>{{this.lookUpService.getNameById(position.localization,"localization")}}</p>
+            <p>{{this.position.localization?.name}}</p>
           </div>
 
           <div class="data-container-select">
             <p>{{"position_field_status"|translate}}</p>
-            <p>{{this.lookUpService.getNameById(position.status,"positionStatus")}}</p>
+            <p>{{position.status?.name}}</p>
           </div>
 
           <div class="data-container-integer">
@@ -175,14 +175,14 @@
   <ng-container *ngIf="isInserting">
     <div class="table-container">
       <app-overlay-spinner [show]="false"></app-overlay-spinner>
-      <app-candidate-table [selection]="candidateSelectionModel" [multipleSelection]="true"></app-candidate-table>
+      <app-candidate-table [dataSource]="candidates" [selection]="candidateSelectionModel" [multipleSelection]="true"></app-candidate-table>
     </div>
   </ng-container>
 
   <ng-container *ngIf="!isInserting">
     <div class="table-container">
       <app-overlay-spinner [show]="false"></app-overlay-spinner>
-      <app-application-table [selection]="applicationSelectionModel" [multipleSelection]="true"></app-application-table>
+      <app-application-table [dataSource]="applications" [selection]="applicationSelectionModel" [multipleSelection]="true"></app-application-table>
     </div>
   </ng-container>
 
