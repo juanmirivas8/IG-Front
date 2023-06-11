@@ -58,8 +58,8 @@ export class ApplicationTableComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
-  addPosition() {
-
+  addApplication() {
+    this.router.navigate(['/main/applications/newApplication']);
   }
   isColumnVisible(column: string): boolean {
     return this.displayedColumns.includes(column);
@@ -134,5 +134,9 @@ export class ApplicationTableComponent implements OnInit, AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  navigateToApplication(row:Application) {
+    this.router.navigate(['/main/applications/', row.id]);
   }
 }
