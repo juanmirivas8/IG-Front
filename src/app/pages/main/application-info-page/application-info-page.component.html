@@ -3,152 +3,88 @@
     <ng-container *ngIf="!isInserting && !isUpdating">
       <div class="data-container">
         <div class="data-container-header">
-          <div>{{"candidate_info_formTitle"|translate}}</div>
+          <div>{{"application_info_formTitle"|translate}}</div>
           <div style="margin-left: auto"></div>
+          <button (click)="deleteAction()" mat-raised-button class="cancelButton" type="button">{{"application_info_delete"|translate}}</button>
           <button (click)="editAction()" mat-raised-button class="signInButton"
-            type="button">{{"candidate_info_edit"|translate}}</button>
+            type="button">{{"application_info_edit"|translate}}</button>
         </div>
-  
+
         <div class="data-container-body">
-  
           <div class="data-container-select">
-            <p>{{"candidate_field_name"|translate}}</p>
-            <p>{{this.application.candidate?.name}}</p>
-          </div>
-  
-          <div class="data-container-select">
-            <p>{{"candidate_field_surname"|translate}}</p>
-            <p>{{this.application.position?.area}}</p>
-          </div>
-  
-          <div class="data-container-select">
-            <p>{{"candidate_field_status"|translate}}</p>
-            <p>{{this.application.description}}</p>
-          </div>
-  
-          <div class="data-container-select">
-            <p>{{"candidate_field_contactMethod"|translate}}</p>
+            <p>{{"application_field_status"|translate}}</p>
             <p>{{this.application.status?.name}}</p>
           </div>
-  
+
           <div class="data-container-description">
-            <p>{{"candidate_field_description"|translate}}</p>
+            <p>{{"application_field_description"|translate}}</p>
+            <p>{{this.application.description}}</p>
+          </div>
+
+          <div class="data-container-description">
+            <p>{{"application_field_rejectionReason"|translate}}</p>
             <p>{{this.application.rejectionReason}}</p>
           </div>
+
+
         </div>
       </div>
     </ng-container>
-  
+
     <ng-container *ngIf="isInserting || isUpdating">
       <form class="data-container" [formGroup]="form">
         <div class="data-container-header">
-  
-          <div>{{"candidate_info_formTitle"|translate}}</div>
+
+          <div>{{"application_info_formTitle"|translate}}</div>
           <div style="margin-left: auto"></div>
-          <button (click)="cancelAction()" mat-raised-button class="cancelButton" type="button">{{"position_info_cancel"|translate}}</button>
+          <button (click)="cancelAction()" mat-raised-button class="cancelButton" type="button">{{"application_info_cancel"|translate}}</button>
           <button (click)="insertAction()" mat-raised-button class="signInButton"
-            type="button">{{"candidate_info_save"|translate}}</button>
-  
+            type="button">{{"application_info_save"|translate}}</button>
+
         </div>
-  
+
         <div class="data-container-body">
-  
+
           <div class="data-container-select">
-            <p>{{"candidate_field_name"|translate}}</p>
-            <mat-form-field class="formField" appearance="outline">
-              <input matInput type="text" formControlName="name">
-            </mat-form-field>
-          </div>
-  
-          <div class="data-container-integer">
-            <p>{{"candidate_field_surname"|translate}}</p>
-            <mat-form-field class="formField" appearance="outline">
-              <input matInput type="text" formControlName="surname" maxlength="1">
-            </mat-form-field>
-          </div>
-  
-          <div class="data-container-select">
-            <p>{{"candidate_field_status"|translate}}</p>
+            <p>{{"application_field_status"|translate}}</p>
             <mat-form-field class="formField" appearance="outline">
               <mat-select formControlName="status" [compareWith]="compareId">
-                <mat-option *ngFor="let status of lookUpService.candidateStatus" [value]="status">
+                <mat-option *ngFor="let status of lookUpService.applicationStatus" [value]="status">
                   {{status.name|translate}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
           </div>
-  
-          <div class="data-container-select">
-            <p>{{"candidate_field_contactMethod"|translate}}</p>
-            <mat-form-field class="formField" appearance="outline">
-              <mat-select formControlName="contactMethod" [compareWith]="compareId">
-                <mat-option *ngFor="let contactMethod of lookUpService.contactMethods" [value]="contactMethod">
-                  {{contactMethod.name|translate}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-  
-          <div class="data-container-dates">
-            <p>{{"candidate_field_cvDate"|translate}}</p>
-            <mat-form-field>
-              <input matInput [matDatepicker]="cvDate" formControlName="cvDate">
-              <mat-datepicker-toggle matSuffix [for]="cvDate"></mat-datepicker-toggle>
-              <mat-datepicker #cvDate></mat-datepicker>
-            </mat-form-field>
-          </div>
-  
-          <div class="data-container-dates">
-            <p>{{"candidate_field_interviewDate"|translate}}</p>
-            <mat-form-field>
-              <input matInput [matDatepicker]="interviewDate" formControlName="interviewDate">
-              <mat-datepicker-toggle matSuffix [for]="interviewDate"></mat-datepicker-toggle>
-              <mat-datepicker #interviewDate></mat-datepicker>
-            </mat-form-field>
-          </div>
-  
-          <div class="data-container-dates">
-            <p>{{"candidate_field_technicalTestDate"|translate}}</p>
-            <mat-form-field>
-              <input matInput [matDatepicker]="technicalTestDate" formControlName="technicalTestDate">
-              <mat-datepicker-toggle matSuffix [for]="technicalTestDate"></mat-datepicker-toggle>
-              <mat-datepicker #technicalTestDate></mat-datepicker>
-            </mat-form-field>
-          </div>
-  
-          <div class="data-container-dates">
-            <p>{{"candidate_field_firstContactDate"|translate}}</p>
-            <mat-form-field>
-              <input matInput [matDatepicker]="firstContactDate" formControlName="firstContactDate">
-              <mat-datepicker-toggle matSuffix [for]="firstContactDate"></mat-datepicker-toggle>
-              <mat-datepicker #firstContactDate></mat-datepicker>
-            </mat-form-field>
-          </div>
-  
+
           <div class="data-container-description">
-            <p>{{"candidate_field_description"|translate}}</p>
+            <p>{{"application_field_description"|translate}}</p>
             <mat-form-field class="formField" appearance="outline">
               <input matInput type="text" formControlName="description">
             </mat-form-field>
           </div>
-  
+
+          <div class="data-container-description">
+            <p>{{"application_field_rejectionReason"|translate}}</p>
+            <mat-form-field class="formField" appearance="outline">
+              <input matInput type="text" formControlName="rejectionReason">
+            </mat-form-field>
+          </div>
         </div>
       </form>
     </ng-container>
-  
-    <ng-container *ngIf="isInserting">
+    <h1>{{"application_info_position"|translate}}</h1>
+    <ng-container *ngIf="true">
       <div class="table-container">
         <app-overlay-spinner [show]="false"></app-overlay-spinner>
-        <app-position-table [selection]="positionSelectionModel" [multipleSelection]="true"></app-position-table>
+        <app-position-table [dataSource]="positions" [selection]="positionSelectionModel" [multipleSelection]="false"></app-position-table>
       </div>
     </ng-container>
-  
-    <ng-container *ngIf="!isInserting">
+  <h1>{{"application_info_candidate"|translate}}</h1>
+    <ng-container *ngIf="true">
       <div class="table-container">
         <app-overlay-spinner [show]="false"></app-overlay-spinner>
-        <app-application-table [selection]="candidateSelectionModel" [multipleSelection]="true"></app-application-table>
+        <app-candidate-table [dataSource]="candidates" [selection]="candidateSelectionModel" [multipleSelection]="false"></app-candidate-table>
       </div>
     </ng-container>
-  
+
   </div>
-  

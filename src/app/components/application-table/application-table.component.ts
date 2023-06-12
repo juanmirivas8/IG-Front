@@ -124,7 +124,7 @@ export class ApplicationTableComponent implements OnInit, AfterViewInit {
       switch (selectedFilter) {
         case 'id': return data.id == Number.parseInt(filter);
         case 'candidate': return data.candidate?.name.toLowerCase().includes(filter);
-        case 'position': return data.position?.id.toLowerCase().includes(filter);
+        case 'position': return data.position?.id == Number.parseInt(filter)
         case 'status': return data.status?.name.toLowerCase().includes(filter);
         case 'rejectionReason': return data.rejectionReason?.toLowerCase().includes(filter);
         case 'description': return data.description?.toLowerCase().includes(filter);
