@@ -55,6 +55,21 @@
   "position_info_edit":"Editar",
   "position_info_formTitle":"Resumen de la posición",
   "position_info_cancel":"Cancelar",
+  "position_info_delete": "Eliminar",
+
+  "candidate_info_save":"Guardar",
+  "candidate_info_edit":"Editar",
+  "candidate_info_formTitle":"Resumen del Candidato",
+  "candidate_info_cancel":"Cancelar",
+  "candidate_info_delete": "Eliminar",
+
+  "application_info_save":"Guardar",
+  "application_info_edit":"Editar",
+  "application_info_formTitle":"Resumen de la Aplicación",
+  "application_info_cancel":"Cancelar",
+  "application_info_position":"Posición",
+  "application_info_candidate":"Candidato",
+  "application_info_delete": "Eliminar",
 
 
   "candidate_field_id": "Id",

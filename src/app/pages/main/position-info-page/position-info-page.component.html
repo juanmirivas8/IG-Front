@@ -5,6 +5,7 @@
       <div class="data-container-header">
         <div>{{"position_info_formTitle"|translate}}</div>
         <div style="margin-left: auto"></div>
+        <button (click)="deleteAction()" mat-raised-button class="cancelButton" type="button">{{"position_info_delete"|translate}}</button>
         <button (click)="editAction()" mat-raised-button class="signInButton" type="button">{{"position_info_edit"|translate}}</button>
       </div>
 
@@ -175,14 +176,14 @@
     </form>
   </ng-container>
 
-  <ng-container *ngIf="isInserting">
+  <ng-container *ngIf="false">
     <div class="table-container">
       <app-overlay-spinner [show]="false"></app-overlay-spinner>
       <app-candidate-table [dataSource]="candidates" [selection]="candidateSelectionModel" [multipleSelection]="true"></app-candidate-table>
     </div>
   </ng-container>
 
-  <ng-container *ngIf="!isInserting">
+  <ng-container *ngIf="true">
     <div class="table-container">
       <app-overlay-spinner [show]="false"></app-overlay-spinner>
       <app-application-table [dataSource]="applications" [selection]="applicationSelectionModel" [multipleSelection]="true"></app-application-table>

@@ -34,29 +34,6 @@ export class PositionInfoPageComponent implements OnInit {
               private router:Router, private positionService: PositionService,private candidateService:CandidateService,
               private applicationService:ApplicationService) {
 
-      var id = this.actRoute.snapshot.paramMap.get('id');
-      console.log(id);
-      if(id == null||undefined){
-        this.isInserting = true;
-        this.isUpdating = true;
-      }else{
-        this.isUpdating = false;
-        this.isInserting = false;
-        firstValueFrom(this.positionService.getById(Number.parseInt(id))).then((response)=>{
-          this.position = response.data;
-          if(this.position.applications!=null){
-            this.applications.data = this.position.applications;
-          }
-        })
-      }
-      firstValueFrom(this.candidateService.getAll()).then((response)=>{
-        this.candidates.data = response.data;
-      });
-
-
-
-  }
-  ngOnInit(): void {
     this.form = this.fb.group({
       area: new FormControl(this.position.area,[Validators.required]),
       project: new FormControl(this.position.project,[Validators.required]),
@@ -69,6 +46,36 @@ export class PositionInfoPageComponent implements OnInit {
       creationDate: new FormControl(this.position.creationDate,[Validators.required]),
       closingDate: new FormControl(this.position.closingDate)
     });
+
+
+  }
+  async ngOnInit(): Promise<void> {
+    var id = this.actRoute.snapshot.paramMap.get('id');
+    console.log(id);
+    if(id == null||undefined){
+      this.isInserting = true;
+      this.isUpdating = true;
+    }else{
+      this.isUpdating = false;
+      this.isInserting = false;
+      await firstValueFrom(this.positionService.getById(Number.parseInt(id))).then((response)=>{
+        this.position = response.data;
+      })
+    }
+    await firstValueFrom(this.candidateService.getAll()).then((response)=>{
+      this.candidates.data = response.data;
+    });
+
+    await firstValueFrom(this.applicationService.getAll()).then((response)=>{
+      this.applications.data = response.data;
+    });
+
+    let applicationsOfCandidate = this.applications.data.filter((application)=>{
+      return application.position?.id == this.position.id;
+    });
+
+    this.applications.data = applicationsOfCandidate;
+    this.applications.connect();
   }
 
   editAction() {
@@ -143,5 +150,19 @@ export class PositionInfoPageComponent implements OnInit {
 
   cancelAction() {
     this.isUpdating = false;
+  }
+
+  deleteAction() {
+    firstValueFrom(this.positionService.delete(this.position))
+      .then((response) => {
+        console.log(response);
+        this.router.navigate([`/main/positions`]);
+      })
+      .catch((error)=>{
+        console.log(error);
+      })
+      .finally(()=>{
+
+      });
   }
 }
