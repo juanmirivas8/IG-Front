@@ -1,6 +1,8 @@
 <div class="container">
-  <div class="search-bar">
-
+  <div class="search-bar" *ngIf="isSearchVisible">
+    <button mat-icon-button (click)="toggleSearch()">
+      <mat-icon>{{'clear'}}</mat-icon>
+    </button>
     <h4>{{"position_table_searchByPrefix"|translate}} {{filterNameHint|translate}}</h4>
     <mat-form-field>
       <mat-label>{{"position_table_searchHint"|translate}}</mat-label>
@@ -19,7 +21,7 @@
     </button>
     <mat-menu #filter>
       <button (click)="toggleFilterSelection(column);$event.stopPropagation()" mat-menu-item
-        *ngFor="let column of filterColums">
+              *ngFor="let column of filterColums">
         <mat-checkbox disabled [checked]="filterSelection.isSelected(column)"></mat-checkbox>
 
         {{ 'position_field_' + column | translate }}
@@ -29,23 +31,23 @@
 
   <div class="table">
     <div class="tableHeader">
-
-     <!--  <h4>{{"position_table_showHelpText"|translate}}</h4>
-      <button mat-stroked-button color="primary">{{"position_table_openPositions"|translate}}</button>
-      <button mat-stroked-button color="primary">{{"position_table_closedPositions"|translate}}</button> -->
-
+      <button mat-icon-button (click)="toggleSearch()" *ngIf="!isSearchVisible">
+        <mat-icon>{{'search'}}</mat-icon>
+      </button>
       <div class="spacer"></div>
 
       <button mat-raised-button color="primary" (click)="addPosition()">+
         {{"position_table_addPosition"|translate}}</button>
-      <button mat-icon-button><mat-icon>refresh</mat-icon></button>
+      <button mat-icon-button>
+        <mat-icon>refresh</mat-icon>
+      </button>
       <button mat-icon-button [matMenuTriggerFor]="fieldsVisibility">
         <mat-icon>visibility</mat-icon>
       </button>
       <mat-menu #fieldsVisibility>
 
         <button mat-menu-item *ngFor="let column of availableColumns"
-          (click)="toggleColumn(column);$event.stopPropagation()">
+                (click)="toggleColumn(column);$event.stopPropagation()">
           <mat-checkbox disabled [checked]="isColumnVisible(column)"></mat-checkbox>
           {{ 'position_field_' + column | translate }}
         </button>
@@ -56,12 +58,12 @@
 
         <th mat-header-cell *matHeaderCellDef>
           <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
-            [indeterminate]="selection.hasValue() && !isAllSelected()">
+                        [indeterminate]="selection.hasValue() && !isAllSelected()">
           </mat-checkbox>
         </th>
         <td mat-cell *matCellDef="let row">
           <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? toggleRowSelection(row) : null;"
-            [checked]="selection.isSelected(row)">
+                        [checked]="selection.isSelected(row)">
           </mat-checkbox>
         </td>
       </ng-container>

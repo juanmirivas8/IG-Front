@@ -97,6 +97,7 @@
   "application_field_status": "Estado",
   "application_field_rejectionReason": "Motivo de Rechazo",
   "application_field_description": "Descripción",
+  "application_field_select": "Columna de selección",
 
   "application_table_openApplication": "Solicitudes Abiertas",
   "application_table_closedApplication": "Solicitudes Cerradas",

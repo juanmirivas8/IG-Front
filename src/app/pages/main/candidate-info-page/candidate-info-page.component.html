@@ -157,17 +157,10 @@
     </form>
   </ng-container>
 
-  <ng-container *ngIf="false">
-    <div class="table-container">
-      <app-overlay-spinner [show]="false"></app-overlay-spinner>
-      <app-position-table [selection]="positionSelectionModel" [multipleSelection]="true"></app-position-table>
-    </div>
-  </ng-container>
-
   <ng-container *ngIf="true">
     <div class="table-container">
       <app-overlay-spinner [show]="false"></app-overlay-spinner>
-      <app-application-table [dataSource]="applications" [selection]="applicationSelectionModel" [multipleSelection]="true"></app-application-table>
+      <app-application-table [isSearchVisible]="false" [dataSource]="applications" [selection]="applicationSelectionModel" [multipleSelection]="true"></app-application-table>
     </div>
   </ng-container>
 

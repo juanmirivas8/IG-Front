@@ -21,8 +21,6 @@ import {MatTableDataSource} from "@angular/material/table";
 export class PositionInfoPageComponent implements OnInit {
 
   applications: MatTableDataSource<Application> = new MatTableDataSource<Application>();
-  candidates: MatTableDataSource<Candidate> = new MatTableDataSource<Candidate>();
-  candidateSelectionModel = new SelectionModel<Candidate>(true, [], true);
   applicationSelectionModel = new SelectionModel<Application>(true, [], true);
 
   public isInserting: boolean = false;
@@ -60,22 +58,9 @@ export class PositionInfoPageComponent implements OnInit {
       this.isInserting = false;
       await firstValueFrom(this.positionService.getById(Number.parseInt(id))).then((response)=>{
         this.position = response.data;
+        response.data.applications ? this.applications.data = response.data.applications : this.applications.data = [];
       })
     }
-    await firstValueFrom(this.candidateService.getAll()).then((response)=>{
-      this.candidates.data = response.data;
-    });
-
-    await firstValueFrom(this.applicationService.getAll()).then((response)=>{
-      this.applications.data = response.data;
-    });
-
-    let applicationsOfCandidate = this.applications.data.filter((application)=>{
-      return application.position?.id == this.position.id;
-    });
-
-    this.applications.data = applicationsOfCandidate;
-    this.applications.connect();
   }
 
   editAction() {

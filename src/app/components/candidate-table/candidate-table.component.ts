@@ -21,6 +21,7 @@ export class CandidateTableComponent implements OnInit, AfterViewInit {
   @Input() displayedColumns: string[] = [];
   @Input() dataSource: MatTableDataSource<Candidate>;
   @Input() selection = new SelectionModel<Candidate>(true, [], true);
+  @Input() isSearchVisible: boolean = true;
   filterSelection = new SelectionModel<string>(true, [], true);
   filterNameHint: string = "";
   filterNameHintOptions: string[] = [
@@ -148,6 +149,10 @@ export class CandidateTableComponent implements OnInit, AfterViewInit {
 
   navigateToCandidate(row:Candidate) {
     this.router.navigate(['/main/candidates/', row.id]);
+  }
+
+  toggleSearch() {
+    this.isSearchVisible = !this.isSearchVisible;
   }
 }
 

@@ -50,7 +50,7 @@ export class ApplicationInfoPageComponent implements OnInit {
     await firstValueFrom(this.candidateService.getAll()).then((response) => {
       this.candidates.data = response.data;
     });
-    var id = this.actRoute.snapshot.paramMap.get('id');
+    let id = this.actRoute.snapshot.paramMap.get('id');
 
     if (id == null || undefined) {
       this.isInserting = true;
@@ -78,9 +78,6 @@ export class ApplicationInfoPageComponent implements OnInit {
       this.candidates.connect();
       this.positions.connect();
     }
-
-
-
   }
 
   editAction() {
@@ -94,9 +91,6 @@ export class ApplicationInfoPageComponent implements OnInit {
   }
 
   insertAction() {
-    if(this.application.candidate) this.fillCandidate(this.application.candidate);
-
-    if(this.application.position) this.fillPosition(this.application.position!);
     let applicationForm: Application = {
       id: this.application.id,
       candidate: this.application.candidate,
@@ -122,8 +116,6 @@ export class ApplicationInfoPageComponent implements OnInit {
     } else {
       applicationForm.position = this.positionSelectionModel.selected[0];
       applicationForm.candidate = this.candidateSelectionModel.selected[0];
-      this.fillCandidate(applicationForm.candidate!);
-      this.fillPosition(applicationForm.position!);
       firstValueFrom(this.applicationService.create(applicationForm))
         .then((response) => {
           console.log(response);
@@ -147,23 +139,6 @@ export class ApplicationInfoPageComponent implements OnInit {
   cancelAction() {
     this.isUpdating = false;
   }
-
-  private fillPosition(position: Position) {
-    position.applications = [];
-    position.localization = {id: 0, name: ""};
-    position.rol = {id: 0, name: ""};
-    position.subRol = {id: 0, name: ""};
-    position.area = {id: 0, name: ""};
-    position.project = {id: 0, name: ""};
-    position.status = {id: 0, name: ""};
-  }
-
-  private fillCandidate(candidate: Candidate) {
-    candidate.applications = [];
-    candidate.contactMethod = {id: 0, name: ""};
-    candidate.status = {id: 0, name: ""};
-  }
-
   deleteAction() {
     firstValueFrom(this.applicationService.delete(this.application)).then(r =>
       this.router.navigate(['/main/applications']));

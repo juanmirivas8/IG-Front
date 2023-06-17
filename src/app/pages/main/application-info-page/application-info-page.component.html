@@ -25,8 +25,6 @@
             <p>{{"application_field_rejectionReason"|translate}}</p>
             <p>{{this.application.rejectionReason}}</p>
           </div>
-
-
         </div>
       </div>
     </ng-container>
@@ -76,14 +74,14 @@
     <ng-container *ngIf="true">
       <div class="table-container">
         <app-overlay-spinner [show]="false"></app-overlay-spinner>
-        <app-position-table [dataSource]="positions" [selection]="positionSelectionModel" [multipleSelection]="false"></app-position-table>
+        <app-position-table [isSearchVisible]="false" [dataSource]="positions" [selection]="positionSelectionModel" [multipleSelection]="false"></app-position-table>
       </div>
     </ng-container>
   <h1>{{"application_info_candidate"|translate}}</h1>
     <ng-container *ngIf="true">
       <div class="table-container">
         <app-overlay-spinner [show]="false"></app-overlay-spinner>
-        <app-candidate-table [dataSource]="candidates" [selection]="candidateSelectionModel" [multipleSelection]="false"></app-candidate-table>
+        <app-candidate-table [isSearchVisible]="false" [dataSource]="candidates" [selection]="candidateSelectionModel" [multipleSelection]="false"></app-candidate-table>
       </div>
     </ng-container>
 

@@ -18,11 +18,9 @@ import {Position} from "../../../../models/Position";
   styleUrls: ['./candidate-info-page.component.scss']
 })
 export class CandidateInfoPageComponent implements OnInit {
-  positionSelectionModel = new SelectionModel<Position>(true, [], true);
   applicationSelectionModel = new SelectionModel<Application>(true, [], true);
 
   applications: MatTableDataSource<Application> = new MatTableDataSource<Application>();
-  positions: MatTableDataSource<Position> = new MatTableDataSource<Position>();
 
   public isInserting: boolean = false;
   public isUpdating: boolean = true;
@@ -45,8 +43,6 @@ export class CandidateInfoPageComponent implements OnInit {
       firstContactDate: new FormControl(this.candidate.firstContactDate, [Validators.required]),
     });
 
-
-
   }
   async ngOnInit(): Promise<void> {
     var id = this.actRoute.snapshot.paramMap.get('id');
@@ -61,22 +57,10 @@ export class CandidateInfoPageComponent implements OnInit {
 
       await firstValueFrom(this.candidateService.getById(Number.parseInt(id))).then((response) => {
         this.candidate = response.data;
+        this.candidate.applications ? this.applications.data = this.candidate.applications : this.applications.data = [];
       });
-
-      await firstValueFrom(this.applicationService.getAll()).then((response) => {
-        this.applications.data = response.data;
-      });
-
-      this.applications.data = this.applications.data.filter((application) => {
-        return application.candidate?.id == this.candidate.id;
-      });
-      this.applications.connect();
 
     }
-
-    firstValueFrom(this.positionService.getAll()).then((response)=>{
-      this.positions.data = response.data;
-    });
   }
   editAction() {
     this.isUpdating = true;
