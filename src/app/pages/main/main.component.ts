@@ -17,4 +17,10 @@ export class MainComponent{
   changeLanguage(lang: string) {
     this.translateService.use(lang);
   }
+
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    window.location.reload();
+  }
 }

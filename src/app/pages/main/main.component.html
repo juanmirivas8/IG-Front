@@ -26,7 +26,7 @@
             <a mat-list-item (click)="changeLanguage('es')" ><span>{{'main_button_menu_language_spanish'|translate}}</span></a>
           </mat-nav-list>
         </mat-expansion-panel>
-      <button mat-menu-item><mat-icon>exit_to_app</mat-icon>{{'main_button_menu_logout' | translate}}</button>
+      <button mat-menu-item (click)="logout()"><mat-icon>exit_to_app</mat-icon>{{'main_button_menu_logout' | translate}}</button>
     </mat-menu>
 
 

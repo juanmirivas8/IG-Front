@@ -22,6 +22,7 @@ export class PositionTableComponent implements OnInit, AfterViewInit {
   @Input() displayedColumns: string[] = [];
   @Input() dataSource: MatTableDataSource<Position>;
   @Input() selection = new SelectionModel<Position>(true, [], true);
+  @Input() isSearchVisible: boolean = true;
   filterSelection = new SelectionModel<string>(true, [], true);
   filterNameHint: string = "";
   filterNameHintOptions: string[] = [
@@ -38,6 +39,7 @@ export class PositionTableComponent implements OnInit, AfterViewInit {
     "position_field_rol",
     "position_field_subrol"
   ];
+
   constructor(private positionService: PositionService, private router: Router) {
     this.dataSource = new MatTableDataSource<Position>();
     this.availableColumns = Position.getKeys();
@@ -160,5 +162,8 @@ export class PositionTableComponent implements OnInit, AfterViewInit {
   navigateToPosition(row:Position) {
     console.log(row);
     this.router.navigate([`/main/positions/${row.id}`]);
+  }
+  toggleSearch() {
+    this.isSearchVisible = !this.isSearchVisible;
   }
 }

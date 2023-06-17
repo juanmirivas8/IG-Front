@@ -22,6 +22,7 @@ export class ApplicationTableComponent implements OnInit, AfterViewInit {
   @Input() displayedColumns: string[] = [];
   @Input() dataSource: MatTableDataSource<Application>;
   @Input() selection = new SelectionModel<Application>(true, [], true);
+  @Input() isSearchVisible: boolean = true;
   filterSelection = new SelectionModel<string>(true, [], true);
   filterNameHint: string = "";
   filterNameHintOptions: string[] = [
@@ -138,5 +139,9 @@ export class ApplicationTableComponent implements OnInit, AfterViewInit {
 
   navigateToApplication(row:Application) {
     this.router.navigate(['/main/applications/', row.id]);
+  }
+
+  toggleSearch() {
+    this.isSearchVisible = !this.isSearchVisible;
   }
 }

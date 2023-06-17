@@ -96,6 +96,7 @@
   "application_field_status": "Status",
   "application_field_rejectionReason": "Rejection Reason",
   "application_field_description": "Description",
+  "application_field_select": "Select Column",
 
   "application_table_openApplication": "Open Applications",
   "application_table_closedApplication": "Closed Applications",
