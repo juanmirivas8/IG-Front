@@ -1,4 +1,13 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+  ViewEncapsulation
+} from '@angular/core';
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
@@ -6,6 +15,8 @@ import { Position } from "../../../models/Position";
 import { SelectionModel } from "@angular/cdk/collections";
 import { PositionService } from "../../services/position.service";
 import { Router } from "@angular/router";
+import {FormControl, FormGroup} from "@angular/forms";
+import {LookUpService} from "../../services/look-up.service";
 
 
 @Component({
@@ -40,7 +51,21 @@ export class PositionTableComponent implements OnInit, AfterViewInit {
     "position_field_subrol"
   ];
 
-  constructor(private positionService: PositionService, private router: Router) {
+  public searchForm: FormGroup = new FormGroup({
+    area: new FormControl(''),
+    project: new FormControl(''),
+    rol: new FormControl(''),
+    subrol: new FormControl(''),
+    localization: new FormControl(''),
+    status: new FormControl(''),
+    vacancies: new FormControl(''),
+    creationDate: new FormControl(''),
+    closingDate: new FormControl(''),
+    lastUpdate: new FormControl(''),
+    description: new FormControl('')
+  });
+
+  constructor(private positionService: PositionService, private router: Router,public lookUpService:LookUpService) {
     this.dataSource = new MatTableDataSource<Position>();
     this.availableColumns = Position.getKeys();
     this.availableColumns.unshift('select');
@@ -165,5 +190,9 @@ export class PositionTableComponent implements OnInit, AfterViewInit {
   }
   toggleSearch() {
     this.isSearchVisible = !this.isSearchVisible;
+  }
+
+  searchPanelSubmit(){
+    
   }
 }

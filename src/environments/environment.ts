@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   api:{
-    baseUrl:'http://localhost:5092',
+    baseUrl:'https://localhost:443',
     endpoints:{
       candidate:{
         getAllCandidates:'/Candidate/GetAll',

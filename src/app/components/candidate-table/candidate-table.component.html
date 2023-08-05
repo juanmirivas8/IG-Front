@@ -15,7 +15,90 @@
 
 
     <button mat-stroked-button color="primary">{{"candidate_table_reset"|translate}}</button>
-    <button mat-raised-button color="primary">{{"candidate_table_searchHint"|translate}}</button>
+    <button mat-raised-button color="primary" [mat-menu-trigger-for]="searchPanel">{{"candidate_table_searchHint"|translate}}</button>
+
+    <mat-menu #searchPanel>
+      <form [formGroup]="searchForm" (click)="$event.stopPropagation()" class="searchPanel">
+        <mat-form-field>
+          <mat-label>{{"position_field_project"|translate}}</mat-label>
+          <mat-select formControlName="project" multiple>
+            <mat-option *ngFor="let project of lookUpService.projects" [value]="project">
+              {{project.name|translate}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>{{"position_field_area"|translate}}</mat-label>
+          <mat-select formControlName="area" multiple>
+            <mat-option *ngFor="let area of lookUpService.areas" [value]="area">
+              {{area.name|translate}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>{{"position_field_rol"|translate}}</mat-label>
+          <mat-select formControlName="rol" multiple>
+            <mat-option *ngFor="let rol of lookUpService.roles" [value]="rol">
+              {{rol.name|translate}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>{{"position_field_subRol"|translate}}</mat-label>
+          <mat-select formControlName="subrol" multiple>
+            <mat-option *ngFor="let subrol of lookUpService.subRoles" [value]="subrol">
+              {{subrol.name|translate}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>{{"position_field_localization"|translate}}</mat-label>
+          <mat-select formControlName="localization" multiple>
+            <mat-option *ngFor="let localization of lookUpService.localizations" [value]="localization">
+              {{localization.name|translate}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>{{"position_field_status"|translate}}</mat-label>
+          <mat-select formControlName="status" multiple>
+            <mat-option *ngFor="let status of lookUpService.positionStatus" [value]="status">
+              {{status.name|translate}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>{{"position_field_creationDate"|translate}}</mat-label>
+          <input matInput [matDatepicker]="creationDatepicker" formControlName="creationDate">
+          <mat-datepicker-toggle matSuffix [for]="creationDatepicker"></mat-datepicker-toggle>
+          <mat-datepicker #creationDatepicker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>{{"position_field_closingDate"|translate}}</mat-label>
+          <input matInput [matDatepicker]="closingDatepicker" formControlName="closingDate">
+          <mat-datepicker-toggle matSuffix [for]="closingDatepicker"></mat-datepicker-toggle>
+          <mat-datepicker #closingDatepicker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>{{"position_field_vacancies"|translate}}</mat-label>
+          <input type="number" matInput formControlName="vacancies">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>{{"position_field_description"|translate}}</mat-label>
+          <input type="text" matInput formControlName="description">
+        </mat-form-field>
+
+      </form>
+    </mat-menu>
 
     <button mat-icon-button [matMenuTriggerFor]="filter">
       <mat-icon>settings</mat-icon>

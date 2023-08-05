@@ -1,0 +1,10 @@
+export enum Operator {
+  GREATER,
+  GREATEROREQUAL,
+  LESS,
+  LESSOREQUAL,
+  EQUAL,
+  DISTINCT,
+  CONTAINS,
+  NOTCONTAINS
+}

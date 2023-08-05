@@ -6,6 +6,8 @@ import { SelectionModel } from "@angular/cdk/collections";
 import { Router } from "@angular/router";
 import { Candidate } from 'src/models/Candidate';
 import { CandidateService } from 'src/app/services/candidate.service';
+import {LookUpService} from "../../services/look-up.service";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-candidate-table',
@@ -36,7 +38,21 @@ export class CandidateTableComponent implements OnInit, AfterViewInit {
     "candidate_field_technicalTestDate",
     "candidate_field_firstContactDate"
   ];
-  constructor(private candidateService: CandidateService, private router: Router) {
+
+  public searchForm: FormGroup = new FormGroup({
+    area: new FormControl(''),
+    project: new FormControl(''),
+    rol: new FormControl(''),
+    subrol: new FormControl(''),
+    localization: new FormControl(''),
+    status: new FormControl(''),
+    vacancies: new FormControl(''),
+    creationDate: new FormControl(''),
+    closingDate: new FormControl(''),
+    lastUpdate: new FormControl(''),
+    description: new FormControl('')
+  });
+  constructor(private candidateService: CandidateService, private router: Router,public lookUpService: LookUpService) {
     this.dataSource = new MatTableDataSource<Candidate>(this.candidateService.candidates);
     this.availableColumns = Candidate.getKeys();
     this.availableColumns.unshift('select');

@@ -37,7 +37,7 @@ import { MatTableModule } from "@angular/material/table";
 import { MatSortModule } from "@angular/material/sort";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
 import { CandidateTableComponent } from './components/candidate-table/candidate-table.component';
 import { ApplicationTableComponent } from './components/application-table/application-table.component';
 
@@ -107,7 +107,10 @@ import { ApplicationTableComponent } from './components/application-table/applic
         }
       }
     },
-    AuthGuard
+    AuthGuard,
+    {
+      provide: MAT_DATE_LOCALE, useValue: 'en-GB'
+    }
   ],
     exports: [
         BreadcrumbComponent,

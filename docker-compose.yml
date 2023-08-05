@@ -1,0 +1,11 @@
+version: '3'
+services:
+  webserver:
+    image: igfront
+    ports:
+      - "443:443"
+    volumes:
+      - ./certs:/etc/nginx/certs
+    environment:
+      - SSL_CERT_PATH=/etc/nginx/certs/fullchain.pem
+      - SSL_KEY_PATH=/etc/nginx/certs/privkey.pem
