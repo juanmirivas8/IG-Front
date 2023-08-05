@@ -35,7 +35,7 @@
   "position_table_addPosition": "Add Position",
   "position_table_showHelpText": "Show:",
   "position_table_searchHint": "Search",
-  "position_table_searchByPrefix": "Search by",
+  "position_table_filterByPrefix": "Filter by",
 
   "position_field_id": "Id",
   "position_field_description": "Description",
